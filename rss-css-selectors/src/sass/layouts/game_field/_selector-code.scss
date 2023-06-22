@@ -1,0 +1,7 @@
+.selector-code {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60%;
+    width: clamp(600px, 80%, 800px);
+}
