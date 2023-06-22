@@ -2,8 +2,8 @@
     display: flex;
     justify-content: center;
     background: 
-        linear-gradient(rgb(66, 185, 221) 1%, rgb(45, 221, 221) 15%, rgb(155, 252, 252) 69%, rgb(248, 240, 156) 71%);
-    border-bottom: solid 10px grey;
+        linear-gradient($color-ambient-sky 1%, $color-ambient-sky-light 15%, $color-ambient-sky-light-light 69%, $color-ambient-sand 71%);
+    border-bottom: solid 10px $color-game-border-divider;
     width: 100%;
     height: 40%;
 }
@@ -15,7 +15,6 @@
     align-items: center;
     width: clamp(600px, 80%, 800px);
     height: 100%;
-    //linear-gradient(-10deg, rgba(206, 44, 79, 0.9) 15%, rgb(106, 143, 212) 85%, rgba(147, 32, 255, 0.719) 95%);
 }
 
 .visual-roof {
@@ -24,7 +23,7 @@
     align-items: center;
     width: 70%;
     height: 25%;
-    background-color: rgb(99, 98, 98);
+    background-color: $color-roof-shadow;
     border-radius: 10px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -37,9 +36,9 @@
         height: 100%;
         border-bottom-left-radius: 25px;
         border-bottom-right-radius: 25px;
-        background-color: rgb(207, 66, 66);
+        background-color: $color-roof-stripe;
         &.light{
-            background-color: rgb(209, 106, 106);
+            background-color: $color-roof-stripe-light;
         }
         &.side-left{
             border-top-left-radius: 10px;
@@ -61,7 +60,7 @@
 .visual-column {
     width: 3%;
     height: 100%;
-    background-color: rgb(139, 83, 18);
+    background-color: $color-dark-wood;
 }
 
 .visual-shelf {
@@ -71,28 +70,28 @@
     align-items: center;
     width: 80%;
     height: 100%;
-    background-color: rgb(199, 152, 97);
-    box-shadow: inset 0px 20px 20px 0px rgb(94, 94, 94);
+    background-color: $color-background-wood;
+    box-shadow: inset 0px 20px 20px 0px $color-tent-shadow;
 }
 
 .visual-shelf-top-board {
     width: 80%;
     height: 5%;
     border-radius: 5px 5px 0 0;
-    background-color: rgb(139, 83, 18);
+    background-color: $color-dark-wood;
 }
 
 .visual-shelf-back-board {
     width: 80%;
     height: 20%;
-    background-color: rgb(165, 109, 45);
+    background-color: $color-light-wood;
 }
 
 .visual-shelf-bottom-board {
     width: 85%;
     height: 10%;
     border-radius: 5px 5px 0 0;
-    background-color: rgb(139, 83, 18);
+    background-color: $color-dark-wood;
 }
 
 .visual-foundation {
@@ -103,5 +102,5 @@
     width: 80%;
     height: 4%;
     border-radius: 5px 5px 0 0;
-    background-color: rgb(124, 123, 121);
+    background-color: $color-foundation;
 }
