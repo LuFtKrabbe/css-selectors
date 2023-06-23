@@ -1,5 +1,35 @@
 .game-field-selector {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
     width: 45%;
-    height: 85%;
     background-color: $color-game-field-selector;
+    border-radius: 5px;
+}
+
+.selector-number-block-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 8%;
+    order: -1;
+    margin: 8px 8px 8px 8px;
+}
+
+.selector-number-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 14px;
+    margin: 1px;
+    border-radius: 3px;
+    background-color: $color-game-field-selector-number;
+}
+
+.selector-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
