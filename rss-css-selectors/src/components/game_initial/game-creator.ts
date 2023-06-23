@@ -4,8 +4,8 @@ import { type DataCodeField } from '../types/code-interfaces';
 import { type DataSelectorField } from '../types/selector-interfaces';
 
 export class GameCreator {
-  private readonly codeField: DataCodeField;
-  private readonly selectorField: DataSelectorField;
+  codeField: DataCodeField;
+  selectorField: DataSelectorField;
 
   constructor() {
     this.codeField = new CodeField();

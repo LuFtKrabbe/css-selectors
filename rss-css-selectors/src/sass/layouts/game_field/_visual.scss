@@ -3,7 +3,6 @@
     justify-content: center;
     background: 
         linear-gradient($color-ambient-sky 1%, $color-ambient-sky-light 15%, $color-ambient-sky-light-light 69%, $color-ambient-sand 71%);
-    //border-bottom: solid 10px $color-game-border-divider;
     width: 100%;
     height: 40%;
 }
@@ -30,7 +29,6 @@
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
 
-    
     .roof-stripe {
         width: 20%;
         height: 100%;
@@ -54,7 +52,7 @@
     justify-content: center;
     align-items: center;
     width: 70%;
-    height: 50%;
+    height: 60%;
 }
 
 .visual-column {
@@ -72,6 +70,14 @@
     height: 100%;
     background-color: $color-background-wood;
     box-shadow: inset 0px 20px 20px 0px $color-tent-shadow;
+}
+
+.visual-shelf-top-bar {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    flex-direction: row;
+    width: 80%;
 }
 
 .visual-shelf-top-board {

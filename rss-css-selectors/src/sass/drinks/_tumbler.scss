@@ -1,0 +1,39 @@
+.drink-tumbler {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  flex-direction: column;
+  width: 30px;
+}
+
+.tumbler-main {
+  display: flex;
+  justify-content: space-between;
+  height: 30px;
+  width: 100%;
+}
+
+.tumbler-beverage {
+  align-self: flex-end;
+  height: 0%;
+  width: 24px;
+  background-color: orange;
+}
+
+.tumbler-bottom {
+  height: 4px;
+  width: 100%;
+  background-color: $color-tumbler-glass;
+}
+
+.tumbler-wall-left {
+  height: 100%;
+  width: 2px;
+  background-color: $color-tumbler-glass;
+}
+
+.tumbler-wall-right {
+  height: 100%;
+  width: 2px;
+  background-color: $color-tumbler-glass;
+}
