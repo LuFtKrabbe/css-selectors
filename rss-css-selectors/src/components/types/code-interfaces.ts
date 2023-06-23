@@ -1,3 +1,3 @@
 export interface DataCodeField {
-  draw(): void
+  draw: () => void;
 }
