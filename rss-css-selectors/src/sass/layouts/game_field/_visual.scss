@@ -3,7 +3,7 @@
     justify-content: center;
     background: 
         linear-gradient($color-ambient-sky 1%, $color-ambient-sky-light 15%, $color-ambient-sky-light-light 69%, $color-ambient-sand 71%);
-    border-bottom: solid 10px $color-game-border-divider;
+    //border-bottom: solid 10px $color-game-border-divider;
     width: 100%;
     height: 40%;
 }
@@ -100,7 +100,7 @@
     justify-content: center;
     align-items: center;
     width: 80%;
-    height: 4%;
-    border-radius: 5px 5px 0 0;
+    height: 5%;
+    border-radius: 8px 8px 0 0;
     background-color: $color-foundation;
 }
