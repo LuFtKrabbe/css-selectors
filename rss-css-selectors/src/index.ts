@@ -1,7 +1,5 @@
 import './sass/style.scss'
+import { GameCreator } from './components/game_initial/game-creator'
 
-function sum (a: number, b: number): number {
-  return a + b
-}
-
-sum(4, 7)
+const game = new GameCreator()
+game.start()
