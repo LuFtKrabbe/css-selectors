@@ -1,0 +1,39 @@
+.drink-balloon {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: column;
+  position: relative;
+}
+
+.balloon-main {
+  position: relative;
+  height: 20px; 
+  width: 32px;
+  border-bottom: 30px solid $color-tumbler-glass;
+  border-bottom-left-radius: 60%;
+  border-bottom-right-radius: 60%;
+}
+
+.balloon-beverage {
+  position: absolute;
+  top: 16px;
+  left: 3px;
+  height: 8px;
+  width: 26px;
+  border-bottom: 23px solid #ffffff;
+  border-bottom-left-radius: 100%;
+  border-bottom-right-radius: 100%;
+}
+
+.balloon-stem {
+  height: 5px;
+  width: 3px;
+  background-color: $color-tumbler-glass;
+}
+
+.balloon-bottom {
+  height: 3px;
+  width: 20px;
+  background-color: $color-tumbler-glass;
+}

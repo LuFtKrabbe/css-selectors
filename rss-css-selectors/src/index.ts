@@ -7,5 +7,7 @@ game.start();
 
 const orangeJuice = new Drinks('tumbler');
 const mojito = new Drinks('cocktail');
-orangeJuice.createDrink(70);
+const cognac = new Drinks('balloon');
+orangeJuice.createDrink(30);
 mojito.createDrink(40);
+cognac.createDrink(40);

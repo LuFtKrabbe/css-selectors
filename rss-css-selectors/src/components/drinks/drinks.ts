@@ -64,6 +64,27 @@ export class Drinks implements DataDrinks {
       beverage.style.borderTopColor = `#AA0000`;
     }
 
+    if (this.glass === 'balloon') {
+      const main = document.createElement('div') as HTMLElement;
+      const stem = document.createElement('div') as HTMLElement;
+      const bottom = document.createElement('div') as HTMLElement;
+      const beverage = document.createElement('div') as HTMLElement;
+      beverage.classList.add('balloon-beverage');
+
+      main.append(beverage);
+
+      main.classList.add('balloon-main');
+      stem.classList.add('balloon-stem');
+      bottom.classList.add('balloon-bottom');
+
+      drink.append(main);
+      drink.append(stem);
+      drink.append(bottom);
+
+      drink.classList.add('drink-balloon');
+      beverage.style.borderBottomColor = `#AA0000`;
+    }
+
     shelf.append(drink);
   }
 }
