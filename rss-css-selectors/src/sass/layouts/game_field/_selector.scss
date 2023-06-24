@@ -1,31 +1,48 @@
 .game-field-selector {
     display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    width: 45%;
-    background-color: $color-game-field-selector;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 380px;
+    height: 340px;
+    background-color: $color-code-selector-background;
     border-radius: 5px;
 }
 
-.selector-number-block-container {
+.selector-input-container {
     display: flex;
     align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    width: 8%;
-    order: -1;
-    margin: 8px 8px 8px 8px;
+    justify-content: space-evenly;
+    height: 15%;
+    width: 100%;
+    background-color: $color-selector-background;
+    border-radius: 5px;
 }
 
-.selector-number-block {
+.selector-input {
+    box-sizing: border-box;
+    border-radius: 5px;
+    height: 25px;
+    width: 70%;
+    border: solid 1px $color-selector-button;
+}
+
+
+.selector-button {
+    font-size: 1.4rem;
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 25px;
+    width: 20%;
+    border-radius: 5px;
+    background-color: $color-selector-button;
+}
+
+.selector-tips {
+    height: 80%;
     width: 100%;
-    height: 14px;
-    margin: 1px;
-    border-radius: 3px;
-    background-color: $color-game-field-selector-number;
+    border-radius: 5px;
+    background-color: $color-selector-background;
 }
 
 .selector-content {

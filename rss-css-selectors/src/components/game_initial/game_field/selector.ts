@@ -4,15 +4,28 @@ export class SelectorField implements DataSelectorField {
   draw(): void {
     const selectorField = document.querySelector('.game-field-selector') as HTMLElement;
 
-    const numberBlockContainer = document.createElement('div') as HTMLElement;
-    numberBlockContainer.classList.add('selector-number-block-container');
-    selectorField.append(numberBlockContainer);
+    const inputContainer = document.createElement('div') as HTMLElement;
+    inputContainer.classList.add('selector-input-container');
 
-    for (let i = 1; i < 21; i++) {
-      const numberBlock = document.createElement('div') as HTMLElement;
-      numberBlock.classList.add('selector-number-block');
-      numberBlock.innerHTML = `${i}`;
-      numberBlockContainer.append(numberBlock);
-    }
+    selectorField.append(inputContainer);
+
+    const input = document.createElement('input') as HTMLElement;
+    input.classList.add('selector-input');
+    input.setAttribute('type', 'text');
+    input.setAttribute('size', '30');
+    input.setAttribute('size', '16');
+
+    inputContainer.append(input);
+
+    const button = document.createElement('div') as HTMLElement;
+    button.classList.add('selector-button');
+    button.innerText = 'Enter';
+
+    inputContainer.append(button);
+
+    const tips = document.createElement('div') as HTMLElement;
+    tips.classList.add('selector-tips');
+
+    selectorField.append(tips);
   }
 }

@@ -9,12 +9,11 @@
 
 .selector-code {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    height: 75%;
-    width: 100%;
     margin: 0 0 30px 0;
-    border-radius: 20px;
-    background-color: $color-game-field-code-selector-background;
-    width: clamp(600px, 80%, 800px);
+    padding: 15px;
+    border-radius: 10px;
+    background-color: $color-code-selector-background;
+    min-width: 780px;
 }
