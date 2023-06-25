@@ -5,6 +5,13 @@ html {
 
 body {
     margin: 0;
+    background: linear-gradient(
+        $color-ambient-sky 5%, 
+        $color-ambient-sky-light 10%, 
+        $color-ambient-sky-light-light 30%, 
+        $color-ambient-sand 32%,
+        $color-ambient-sand 46%,
+        $color-ambient-sand-dark 48%);
 }
 
 h1 {

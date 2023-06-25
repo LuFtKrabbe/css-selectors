@@ -1,5 +1,15 @@
+.game-level-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+}
+
 .game-level {
-    width: 20%;
-    height: 100%;
+    right: 3%;
+    top: 4%;
+    width: 200px;
+    height: 92%;
+    border-radius: 20px;
     background-color: $color-level;
 }
