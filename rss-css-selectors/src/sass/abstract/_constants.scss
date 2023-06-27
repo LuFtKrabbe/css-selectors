@@ -7,7 +7,7 @@ $color-footer-border: rgba(92, 87, 84, 0.26);
 
 // level
 
-$color-level: rgb(230, 221, 183);;
+$color-level: rgba(230, 221, 183, 0.678);;
 
 // ambient and tent elements
 
@@ -43,3 +43,13 @@ $color-selector-background: rgb(235, 232, 225);
 // drinks
 
 $color-tumbler-glass: rgba(250, 235, 215, 0.6);
+
+
+// Resolutions
+
+$laptop-width: 1023px;
+$tablet-width: 860px;
+$less-tablet-width: 767px;
+
+$tablet-height: 900px;
+$less-tablet-height: 768px;

@@ -1,5 +1,6 @@
 //abstract
 @import "abstract/constants";
+@import "abstract/mixins";
 
 //base
 @import "base/base";
@@ -22,6 +23,5 @@
         @import "layouts/game_field/selector-code";
             @import "layouts/game_field/code";
             @import "layouts/game_field/selector";
-
 
 @import "layouts/footer";

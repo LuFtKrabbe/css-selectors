@@ -3,19 +3,31 @@
     justify-content: space-between;
     flex-direction: column;
     width: 380px;
-    height: 340px;
+    height: 300px;
     background-color: $color-code-selector-background;
     border-radius: 5px;
+    transition: 300ms ease;
+    @include media-tablet {
+        height: 95px;
+        margin: 0 0 15px 0;
+    }
+    @include media-tablet-w-and-h {
+        height: 80px;
+        margin: 0 0 10px 0;
+    }
 }
 
 .selector-input-container {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    height: 15%;
+    height: 50px;
     width: 100%;
     background-color: $color-selector-background;
     border-radius: 5px;
+    @include media-tablet-w-and-h {
+        height: 40px;
+    }
 }
 
 .selector-input {
@@ -25,7 +37,6 @@
     width: 70%;
     border: solid 1px $color-selector-button;
 }
-
 
 .selector-button {
     font-size: 1.4rem;
@@ -39,10 +50,14 @@
 }
 
 .selector-tips {
-    height: 80%;
+    height: 230px;
     width: 100%;
     border-radius: 5px;
     background-color: $color-selector-background;
+    transition: 300ms ease;
+    @include media-tablet {
+        height: 30px;
+    }
 }
 
 .selector-content {

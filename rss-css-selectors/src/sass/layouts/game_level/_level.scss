@@ -2,14 +2,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 300px;
+    width: 280px;
+    overflow-x: hidden;
+    transition: 300ms ease;
+    @include media-laptop {
+        width: 0px;
+    }
 }
 
 .game-level {
-    right: 3%;
-    top: 4%;
-    width: 200px;
+    width: 160px;
     height: 92%;
     border-radius: 20px;
     background-color: $color-level;
+    transition: 300ms ease;
+    @include media-laptop {
+        position: absolute;
+        width: 0px;
+    }
 }
