@@ -1,4 +1,4 @@
-.drink-cocktail {
+.cocktail-drink {
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -16,22 +16,26 @@
 
 }
 
-.cocktail-beverage {
+.cocktail-contain {
   position: absolute;
   top: -26px;
   left: -14px;
   border: 14px solid transparent;
-  border-top: 22px solid #ffffff9d;
+  border-top: 22px solid #ffffff;
 }
 
 .cocktail-stem {
-  height: 20px;
+  height: 18px;
   width: 3px;
   background-color: $color-tumbler-glass;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
 }
 
 .cocktail-bottom {
   height: 3px;
   width: 20px;
   background-color: $color-tumbler-glass;
+  border-top-left-radius: 100%;
+  border-top-right-radius: 100%;
 }

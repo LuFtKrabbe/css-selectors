@@ -1,7 +1,7 @@
 export interface DataDrinks {
   glass: string;
-  beverage: string | undefined;
-  ice: boolean | undefined;
+  color: string;
+  beverage: string;
 
   createDrink: (fullness: number) => void;
 }

@@ -1,4 +1,4 @@
-.drink-balloon {
+.balloon-drink {
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -15,7 +15,7 @@
   border-bottom-right-radius: 60%;
 }
 
-.balloon-beverage {
+.balloon-contain {
   position: absolute;
   top: 16px;
   left: 3px;
@@ -30,10 +30,14 @@
   height: 5px;
   width: 3px;
   background-color: $color-tumbler-glass;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
 }
 
 .balloon-bottom {
   height: 3px;
   width: 20px;
   background-color: $color-tumbler-glass;
+  border-top-left-radius: 100%;
+  border-top-right-radius: 100%;
 }
