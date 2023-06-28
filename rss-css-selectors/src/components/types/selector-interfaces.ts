@@ -1,3 +1,3 @@
-export interface DataSelectorField {
+export interface DataSelectorBlock {
   draw: () => void;
 }

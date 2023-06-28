@@ -1,3 +1,3 @@
-export interface DataCodeField {
+export interface DataCodeBlock {
   draw: () => void;
 }

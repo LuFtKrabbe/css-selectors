@@ -1,13 +1,17 @@
-import { type DataSelectorField } from '../../types/selector-interfaces';
+import { type DataSelectorBlock } from '../../types/selector-interfaces';
 
-export class SelectorField implements DataSelectorField {
+export class SelectorBlock implements DataSelectorBlock {
   draw(): void {
-    const selectorField = document.querySelector('.game-field-selector') as HTMLElement;
+    const selectorCodeBlock = document.querySelector('.selector-code') as HTMLElement;
+
+    const selectorBlock = document.createElement('div');
+    selectorBlock.classList.add('game-field-selector');
+    selectorCodeBlock.append(selectorBlock);
 
     const inputContainer = document.createElement('div') as HTMLElement;
     inputContainer.classList.add('selector-input-container');
 
-    selectorField.append(inputContainer);
+    selectorBlock.append(inputContainer);
 
     const input = document.createElement('input') as HTMLElement;
     input.classList.add('selector-input');
@@ -26,6 +30,6 @@ export class SelectorField implements DataSelectorField {
     const tips = document.createElement('div') as HTMLElement;
     tips.classList.add('selector-tips');
 
-    selectorField.append(tips);
+    selectorBlock.append(tips);
   }
 }
