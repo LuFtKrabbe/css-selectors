@@ -61,13 +61,19 @@ export class Drinks implements DataDrinks {
     return this.colorsGlasses.none;
   }
 
-  createCode(): void {
+  createCode(number: number): void {
     const codeBlock = document.querySelector('.code-block-container') as HTMLElement;
     const glassCode = document.createElement('div') as HTMLElement;
     const beverageCode = document.createElement('div') as HTMLElement;
 
+    glassCode.addEventListener('mouseover', this.showGlass);
+    glassCode.addEventListener('mouseout', this.leaveGlass);
+    beverageCode.addEventListener('mouseover', this.showBeverage);
+    beverageCode.addEventListener('mouseout', this.leaveBeverage);
+
     beverageCode.classList.add('beverage-block-code');
     glassCode.classList.add('glass-block-code');
+    glassCode.setAttribute('number', `${number}`);
 
     let openedTag = `<${this.glass}`;
     if (this.color === 'blue' || this.color === 'green' || this.color === 'purple') {
@@ -88,7 +94,51 @@ export class Drinks implements DataDrinks {
     codeBlock.append(glassCode);
   }
 
-  createDrink(fullness: number): void {
+  showGlass(event: Event): void {
+    const element = event.target as HTMLElement;
+    const elementNumber = element.getAttribute('number');
+    const drinks = document.querySelector('.visual-shelf-top-bar') as HTMLElement;
+    if (element.matches('.glass-block-code') && elementNumber !== null) {
+      const searchedElement = drinks.querySelector(`[number='${elementNumber}']`) as HTMLElement;
+      searchedElement.setAttribute('focus', 'true');
+    }
+  }
+
+  leaveGlass(event: Event): void {
+    const element = event.target as HTMLElement;
+    const elementNumber = element.getAttribute('number');
+    const drinks = document.querySelector('.visual-shelf-top-bar') as HTMLElement;
+    if (element.matches('.glass-block-code') && elementNumber !== null) {
+      const searchedElement = drinks.querySelector(`[number='${elementNumber}']`) as HTMLElement;
+      searchedElement.setAttribute('focus', 'false');
+    }
+  }
+
+  showBeverage(event: Event): void {
+    const element = event.target as HTMLElement;
+    const parentElement = element.parentElement as HTMLElement;
+    const elementNumber = parentElement.getAttribute('number');
+    const drinks = document.querySelector('.visual-shelf-top-bar') as HTMLElement;
+    if (element.matches('.beverage-block-code') && elementNumber !== null) {
+      const searchedGlass = drinks.querySelector(`[number='${elementNumber}']`) as HTMLElement;
+      const searchedElement = searchedGlass.querySelector('[contain=true]') as HTMLElement;
+      searchedElement.setAttribute('focus', 'true');
+    }
+  }
+
+  leaveBeverage(event: Event): void {
+    const element = event.target as HTMLElement;
+    const parentElement = element.parentElement as HTMLElement;
+    const elementNumber = parentElement.getAttribute('number');
+    const drinks = document.querySelector('.visual-shelf-top-bar') as HTMLElement;
+    if (element.matches('.beverage-block-code') && elementNumber !== null) {
+      const searchedGlass = drinks.querySelector(`[number='${elementNumber}']`) as HTMLElement;
+      const searchedElement = searchedGlass.querySelector('[contain=true]') as HTMLElement;
+      searchedElement.setAttribute('focus', 'false');
+    }
+  }
+
+  createDrink(fullness: number, number: number): void {
     const shelf = document.querySelector('.visual-shelf-top-bar') as HTMLElement;
     const drink = document.createElement('div') as HTMLElement;
     const main = document.createElement('div') as HTMLElement;
@@ -97,6 +147,9 @@ export class Drinks implements DataDrinks {
     const contain = document.createElement('div') as HTMLElement;
     const wallLeft = document.createElement('div') as HTMLElement;
     const wallRight = document.createElement('div') as HTMLElement;
+
+    drink.setAttribute('number', `${number}`);
+    contain.setAttribute('contain', 'true');
 
     if (this.glass === 'tumbler') {
       drink.classList.add('tumbler-drink');
@@ -149,7 +202,7 @@ export class Drinks implements DataDrinks {
       bottom.style.backgroundColor = this.setGlassColor(120);
     }
 
-    drink.setAttribute('shine', 'true');
+    drink.setAttribute('move', 'true');
 
     shelf.append(drink);
   }

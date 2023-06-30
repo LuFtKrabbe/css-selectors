@@ -3,5 +3,5 @@ export interface DataDrinks {
   color: string;
   beverage: string;
 
-  createDrink: (fullness: number) => void;
+  createDrink: (fullness: number, number: number) => void;
 }

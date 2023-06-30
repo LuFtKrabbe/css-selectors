@@ -4,8 +4,11 @@
   justify-content: center;
   flex-direction: column;
   width: 30px;
-  &[shine = true] {
-    animation: glowing 1800ms infinite;
+  &[move = true] {
+    animation: moving 1800ms infinite;
+  }
+  &[focus = true] {
+    animation: glowing-drink 1800ms infinite;
   }
 }
 
@@ -22,6 +25,9 @@
   height: 0%;
   width: 24px;
   background-color: orange;
+  &[focus = true] {
+    animation: glowing-beverage 900ms infinite;
+  }
 }
 
 .tumbler-bottom {

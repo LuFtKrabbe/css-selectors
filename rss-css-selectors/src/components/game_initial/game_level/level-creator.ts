@@ -11,34 +11,34 @@ export class LevelCreator implements DataLevelCreator {
       const drink1 = new Drinks(GLASS.TUMBLER, COLOR.NONE, BEVERAGE.NONE);
       const drink2 = new Drinks(GLASS.COCKTAIL, COLOR.NONE, BEVERAGE.NONE);
       const drink3 = new Drinks(GLASS.BALLOON, COLOR.NONE, BEVERAGE.NONE);
-      drink1.createDrink(50);
-      drink2.createDrink(50);
-      drink3.createDrink(40);
-      drink1.createCode();
-      drink2.createCode();
-      drink3.createCode();
+      drink1.createDrink(50, 1);
+      drink2.createDrink(50, 2);
+      drink3.createDrink(40, 3);
+      drink1.createCode(1);
+      drink2.createCode(2);
+      drink3.createCode(3);
     }
     if (levelNumber === 2) {
       const drink1 = new Drinks(GLASS.TUMBLER, COLOR.GREEN, BEVERAGE.NONE);
       const drink2 = new Drinks(GLASS.COCKTAIL, COLOR.NONE, BEVERAGE.NONE);
       const drink3 = new Drinks(GLASS.BALLOON, COLOR.NONE, BEVERAGE.NONE);
-      drink1.createDrink(50);
-      drink2.createDrink(50);
-      drink3.createDrink(40);
-      drink1.createCode();
-      drink2.createCode();
-      drink3.createCode();
+      drink1.createDrink(50, 1);
+      drink2.createDrink(50, 2);
+      drink3.createDrink(40, 3);
+      drink1.createCode(1);
+      drink2.createCode(2);
+      drink3.createCode(3);
     }
     if (levelNumber === 3) {
       const drink1 = new Drinks(GLASS.TUMBLER, COLOR.GREEN, BEVERAGE.NONE);
       const drink2 = new Drinks(GLASS.COCKTAIL, COLOR.NONE, BEVERAGE.COLA);
       const drink3 = new Drinks(GLASS.BALLOON, COLOR.NONE, BEVERAGE.NONE);
-      drink1.createDrink(50);
-      drink2.createDrink(50);
-      drink3.createDrink(40);
-      drink1.createCode();
-      drink2.createCode();
-      drink3.createCode();
+      drink1.createDrink(50, 1);
+      drink2.createDrink(50, 2);
+      drink3.createDrink(40, 3);
+      drink1.createCode(1);
+      drink2.createCode(2);
+      drink3.createCode(3);
     }
   }
 }

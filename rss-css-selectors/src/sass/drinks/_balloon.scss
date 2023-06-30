@@ -4,8 +4,11 @@
   justify-content: flex-end;
   flex-direction: column;
   position: relative;
-  &[shine = true] {
-    animation: glowing 1800ms infinite;
+  &[move = true] {
+    animation: moving 1800ms infinite;
+  }
+  &[focus = true] {
+    animation: glowing-drink 1800ms infinite;
   }
 }
 
@@ -27,6 +30,9 @@
   border-bottom: 23px solid #ffffff;
   border-bottom-left-radius: 100%;
   border-bottom-right-radius: 100%;
+  &[focus = true] {
+    animation: glowing-beverage 900ms infinite;
+  }
 }
 
 .balloon-stem {

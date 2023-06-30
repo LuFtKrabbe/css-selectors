@@ -89,7 +89,6 @@ export class LevelManager extends LevelCreator implements DataLevelManager {
     const levelBlock = document.querySelector('.game-level') as HTMLElement;
     levelBlock.addEventListener('click', this.setStateLevel.bind(this));
     levelBlock.addEventListener('click', this.setCurrentLevel.bind(this));
-
     for (let i = 1; i <= this.levelsState.length; i += 1) {
       const levelTablet = document.createElement('div') as HTMLElement;
       levelTablet.classList.add('level-tablet');
