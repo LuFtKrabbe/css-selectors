@@ -7,7 +7,18 @@ $color-footer-border: rgba(92, 87, 84, 0.26);
 
 // level
 
-$color-level: rgba(230, 221, 183, 0.678);;
+$color-level: rgba(230, 221, 183, 0.678);
+$color-level-border: rgba(167, 154, 99, 0.678);
+$color-level-name: rgba(185, 177, 140, 0.678);
+$color-level-reset-border: rgba(209, 144, 70, 0.678);
+$color-level-reset-hover: rgba(228, 160, 130, 0.678);
+
+$color-level-finished-none: rgba(141, 140, 134, 0.678);
+$color-level-finished-tip: rgba(175, 150, 37, 0.678);
+$color-level-finished-clear: rgba(171, 231, 131, 0.678);
+
+$color-level-state-color: rgba(255, 255, 255, 0.555);
+$color-level-state-hover: rgba(167, 167, 167, 0.397);
 
 // ambient and tent elements
 
@@ -43,7 +54,6 @@ $color-selector-background: rgb(235, 232, 225);
 // drinks
 
 $color-tumbler-glass: #faebd799;
-
 
 // Resolutions
 

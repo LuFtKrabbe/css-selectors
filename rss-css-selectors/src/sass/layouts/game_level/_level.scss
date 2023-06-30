@@ -11,6 +11,10 @@
 }
 
 .game-level {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
     width: 160px;
     height: 92%;
     border-radius: 20px;
@@ -19,5 +23,76 @@
     @include media-laptop {
         position: absolute;
         width: 0px;
+    }
+}
+
+.level-tablet {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    height: 22px;
+    border: solid 2px $color-level-border;
+    border-radius: 5px;
+    margin: 7px 0 0 0;
+    &:first-child {
+        margin: 15px 0 0 0;
+    }
+}
+
+.level-name {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 1.2rem;
+    width: 80%;
+    height: 100%;
+    padding: 0 0 0 10px;
+    background-color: $color-level-name;
+    &:hover {
+        background-color: $color-level-border;
+    }
+    &[current = true] {
+        background-color: $color-level-border;
+    }
+}
+
+.level-state {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: $color-level-state-color;
+    width: 20%;
+    height: 100%;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    &[state = finished-none] {
+        background-color: $color-level-finished-none;
+    }
+    &[state = finished-tip] {
+        background-color: $color-level-finished-tip;
+    }
+    &[state = finished-clear] {
+        background-color: $color-level-finished-clear;
+    }
+    &:hover {
+        background-color: $color-level-state-hover;
+    }
+}
+
+.level-reset {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    width: 80%;
+    height: 22px;
+    border: solid 2px $color-level-reset-border;
+    border-radius: 5px;
+    margin: 7px 0 0 0;
+    &:hover {
+        background-color: $color-level-reset-hover;
     }
 }
