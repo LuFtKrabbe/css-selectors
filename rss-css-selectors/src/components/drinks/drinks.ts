@@ -7,24 +7,38 @@ export enum GLASS {
 }
 
 export enum COLOR {
-  BLUE = '#1fbfbf',
-  GREEN = '#1fbf5f',
-  PURPLE = '#821fbf',
-  NONE = '#faebd7',
+  BLUE = 'blue',
+  GREEN = 'green',
+  PURPLE = 'purple',
+  NONE = 'none',
 }
 
 export enum BEVERAGE {
-  JUICE = '#c27502',
-  WINE = '#aa0000',
-  MILK = '#e0deda',
-  COLA = '#4d320a',
-  NONE = '#ffffff',
+  JUICE = 'juice',
+  WINE = 'wine',
+  MILK = 'milk',
+  COLA = 'cola',
+  NONE = 'none',
 }
 
 export class Drinks implements DataDrinks {
   glass: string;
   color: string;
   beverage: string;
+  colorsGlasses = {
+    blue: '#c27502',
+    green: '#1fbf5f',
+    purple: '#821fbf',
+    none: '#faebd799',
+  };
+
+  colorsBevereges = {
+    juice: '#c27502',
+    wine: '#1fbf5f',
+    milk: '#821fbf',
+    cola: '#4d320a',
+    none: '#faebd700',
+  };
 
   constructor(glass: GLASS, color: COLOR, beverage: BEVERAGE) {
     this.glass = glass;
@@ -34,14 +48,44 @@ export class Drinks implements DataDrinks {
 
   private setBeverageColor(): string {
     const transparency = 220; // 0 - 255
-    if (this.beverage === '#ffffff') {
-      return this.beverage + '00';
+    if (this.beverage === 'juice' || this.beverage === 'wine' || this.beverage === 'milk' || this.beverage === 'cola') {
+      return this.colorsBevereges[this.beverage] + ('0' + transparency.toString(16)).slice(-2);
     }
-    return this.beverage + ('0' + transparency.toString(16)).slice(-2);
+    return this.colorsBevereges.none;
   }
 
   private setGlassColor(transparency: number): string {
-    return this.color + ('0' + transparency.toString(16)).slice(-2);
+    if (this.color === 'blue' || this.color === 'green' || this.color === 'purple') {
+      return this.colorsGlasses[this.color] + ('0' + transparency.toString(16)).slice(-2);
+    }
+    return this.colorsGlasses.none;
+  }
+
+  createCode(): void {
+    const codeBlock = document.querySelector('.code-block-container') as HTMLElement;
+    const glassCode = document.createElement('div') as HTMLElement;
+    const beverageCode = document.createElement('div') as HTMLElement;
+
+    beverageCode.classList.add('beverage-block-code');
+    glassCode.classList.add('glass-block-code');
+
+    let openedTag = `<${this.glass}`;
+    if (this.color === 'blue' || this.color === 'green' || this.color === 'purple') {
+      openedTag += ` id=${this.color}`;
+    }
+    openedTag += '>';
+
+    if (this.beverage === 'juice' || this.beverage === 'wine' || this.beverage === 'milk' || this.beverage === 'cola') {
+      beverageCode.innerText = `<${this.beverage}`;
+    }
+    if (this.beverage === 'juice' || this.beverage === 'wine' || this.beverage === 'milk' || this.beverage === 'cola') {
+      beverageCode.innerText += ` class=half>`;
+    }
+    const closedTag = `</${this.glass}>`;
+
+    glassCode.append(openedTag, beverageCode, closedTag);
+
+    codeBlock.append(glassCode);
   }
 
   createDrink(fullness: number): void {

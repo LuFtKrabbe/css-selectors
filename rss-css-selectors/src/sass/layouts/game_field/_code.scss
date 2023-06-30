@@ -36,3 +36,42 @@
         height: 12px;
     }
 }
+
+.code-block-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 92%;
+    height: 94%;
+}
+
+.glass-block-code {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    font-size: 1.2rem;
+    width: 50%;
+    padding: 0 0 0 8px;
+    @include media-tablet-w-and-h {
+        height: 12px;
+    }
+    &:hover{
+        color: $color-code-glass;
+    }
+}
+
+.beverage-block-code {
+    display: flex;
+    justify-content: flex-start;
+    font-size: 1.2rem;
+    width: 100%;
+    padding: 0 0 0 12px;
+    @include media-tablet-w-and-h {
+        height: 12px;
+    }
+    &:hover{
+        color: $color-code-beverage;
+    }
+}

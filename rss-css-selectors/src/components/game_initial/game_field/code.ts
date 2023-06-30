@@ -18,5 +18,9 @@ export class CodeBlock implements DataCodeBlock {
       numberBlock.innerHTML = `${i}`;
       numberBlockContainer.append(numberBlock);
     }
+
+    const codeBlockContainer = document.createElement('div') as HTMLElement;
+    codeBlockContainer.classList.add('code-block-container');
+    codeBlock.append(codeBlockContainer);
   }
 }
