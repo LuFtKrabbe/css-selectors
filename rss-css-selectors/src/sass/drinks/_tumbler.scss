@@ -4,6 +4,9 @@
   justify-content: center;
   flex-direction: column;
   width: 30px;
+  &[shine = true] {
+    animation: glowing 1800ms infinite;
+  }
 }
 
 .tumbler-main {

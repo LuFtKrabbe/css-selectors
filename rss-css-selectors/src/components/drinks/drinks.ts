@@ -18,7 +18,7 @@ export enum BEVERAGE {
   WINE = '#aa0000',
   MILK = '#e0deda',
   COLA = '#4d320a',
-  NONE = '#ffffff00',
+  NONE = '#ffffff',
 }
 
 export class Drinks implements DataDrinks {
@@ -34,6 +34,9 @@ export class Drinks implements DataDrinks {
 
   private setBeverageColor(): string {
     const transparency = 220; // 0 - 255
+    if (this.beverage === '#ffffff') {
+      return this.beverage + '00';
+    }
     return this.beverage + ('0' + transparency.toString(16)).slice(-2);
   }
 
@@ -59,12 +62,8 @@ export class Drinks implements DataDrinks {
       contain.classList.add('tumbler-contain');
       wallRight.classList.add('tumbler-wall-right');
 
-      [wallLeft, contain, wallRight].forEach((elem: HTMLElement): void => {
-        main.append(elem);
-      });
-      [main, bottom].forEach((elem: HTMLElement): void => {
-        drink.append(elem);
-      });
+      main.append(wallLeft, contain, wallRight);
+      drink.append(main, bottom);
 
       contain.style.height = `${fullness - 15}%`;
       contain.style.backgroundColor = this.setBeverageColor();
@@ -82,13 +81,9 @@ export class Drinks implements DataDrinks {
       bottom.classList.add('cocktail-bottom');
 
       main.append(contain);
-
-      [main, stem, bottom].forEach((elem: HTMLElement): void => {
-        drink.append(elem);
-      });
+      drink.append(main, stem, bottom);
 
       contain.style.borderTopColor = this.setBeverageColor();
-
       main.style.borderTopColor = this.setGlassColor(80);
       stem.style.backgroundColor = this.setGlassColor(120);
       bottom.style.backgroundColor = this.setGlassColor(120);
@@ -102,17 +97,15 @@ export class Drinks implements DataDrinks {
       bottom.classList.add('balloon-bottom');
 
       main.append(contain);
-
-      [main, stem, bottom].forEach((elem: HTMLElement): void => {
-        drink.append(elem);
-      });
+      drink.append(main, stem, bottom);
 
       contain.style.borderBottomColor = this.setBeverageColor();
-
       main.style.borderBottomColor = this.setGlassColor(80);
       stem.style.backgroundColor = this.setGlassColor(120);
       bottom.style.backgroundColor = this.setGlassColor(120);
     }
+
+    drink.setAttribute('shine', 'true');
 
     shelf.append(drink);
   }

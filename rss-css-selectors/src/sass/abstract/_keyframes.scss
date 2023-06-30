@@ -1,0 +1,14 @@
+@keyframes glowing {
+  0% { 
+    filter: drop-shadow(0 0 3px $color-drink-shine);
+    transform: translateY(0px)
+  }
+  50% { 
+    filter: drop-shadow(0 0 15px $color-drink-shine);
+    transform: translateY(-5px)
+  }
+  100% { 
+    filter: drop-shadow(0 0 3px $color-drink-shine);
+    transform: translateY(0px)
+  }
+}

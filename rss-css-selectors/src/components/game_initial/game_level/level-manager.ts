@@ -1,6 +1,7 @@
 import { type DataLevelManager } from '../../types/level-manager-interfaces';
+import { LevelCreator } from './level-creator';
 
-export class LevelManager implements DataLevelManager {
+export class LevelManager extends LevelCreator implements DataLevelManager {
   state: string;
   currentLevel = 1;
   levelsState = [
@@ -17,6 +18,7 @@ export class LevelManager implements DataLevelManager {
   ];
 
   constructor(state: string) {
+    super();
     this.state = state;
   }
 
@@ -78,6 +80,7 @@ export class LevelManager implements DataLevelManager {
         }
       });
     }
+    this.loadLevel(this.currentLevel);
   }
 
   createTabs(): void {
@@ -99,6 +102,7 @@ export class LevelManager implements DataLevelManager {
       levelName.setAttribute('level', `${i}`);
       if (this.currentLevel === i) {
         levelName.setAttribute('current', 'true');
+        this.loadLevel(this.currentLevel);
       } else {
         levelName.setAttribute('current', 'false');
       }
