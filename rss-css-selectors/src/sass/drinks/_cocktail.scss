@@ -25,8 +25,10 @@
   position: absolute;
   top: -26px;
   left: -14px;
-  border: 14px solid transparent;
+  border-left: 14px solid transparent;;
+  border-right: 14px solid transparent;;
   border-top: 22px solid #ffffff;
+  border-bottom: 0px;
   &[focus = true] {
     animation: glowing-beverage 900ms infinite;
   }

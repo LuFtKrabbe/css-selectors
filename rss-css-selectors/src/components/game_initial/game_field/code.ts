@@ -22,5 +22,22 @@ export class CodeBlock implements DataCodeBlock {
     const codeBlockContainer = document.createElement('div') as HTMLElement;
     codeBlockContainer.classList.add('code-block-container');
     codeBlock.append(codeBlockContainer);
+
+    const codeFirstLine = document.createElement('div') as HTMLElement;
+    codeFirstLine.classList.add('code-first-line');
+    codeFirstLine.innerText = '<div class="shelf">';
+
+    codeBlockContainer.append(codeFirstLine);
+
+    const codeBlockLines = document.createElement('div') as HTMLElement;
+    codeBlockLines.classList.add('code-block-lines');
+
+    codeBlockContainer.append(codeBlockLines);
+
+    const codeLastLine = document.createElement('div') as HTMLElement;
+    codeLastLine.classList.add('code-last-line');
+    codeLastLine.innerText = '</div>';
+
+    codeBlockContainer.append(codeLastLine);
   }
 }

@@ -5,7 +5,7 @@ export class LevelCreator implements DataLevelCreator {
   loadLevel(levelNumber: number): void {
     const shelf = document.querySelector('.visual-shelf-top-bar') as HTMLElement;
     shelf.replaceChildren();
-    const code = document.querySelector('.code-block-container') as HTMLElement;
+    const code = document.querySelector('.code-block-lines') as HTMLElement;
     code.replaceChildren();
     if (levelNumber === 1) {
       const drink1 = new Drinks(GLASS.TUMBLER, COLOR.NONE, BEVERAGE.NONE);

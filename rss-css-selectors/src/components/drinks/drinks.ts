@@ -62,7 +62,7 @@ export class Drinks implements DataDrinks {
   }
 
   createCode(number: number): void {
-    const codeBlock = document.querySelector('.code-block-container') as HTMLElement;
+    const codeBlockLines = document.querySelector('.code-block-lines') as HTMLElement;
     const glassCode = document.createElement('div') as HTMLElement;
     const beverageCode = document.createElement('div') as HTMLElement;
 
@@ -92,7 +92,7 @@ export class Drinks implements DataDrinks {
 
     glassCode.append(openedTag, beverageCode, closedTag);
 
-    codeBlock.append(glassCode);
+    codeBlockLines.append(glassCode);
   }
 
   showGlass(event: Event): void {
@@ -286,6 +286,9 @@ export class Drinks implements DataDrinks {
       main.style.borderBottomColor = this.setGlassColor(80);
       stem.style.backgroundColor = this.setGlassColor(120);
       bottom.style.backgroundColor = this.setGlassColor(120);
+    }
+    if (this.beverage === 'none') {
+      contain.remove();
     }
 
     drink.setAttribute('move', 'true');
