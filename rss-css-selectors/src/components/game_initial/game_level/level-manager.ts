@@ -2,7 +2,6 @@ import { type DataLevelManager } from '../../types/level-manager-interfaces';
 import { LevelCreator } from './level-creator';
 
 export class LevelManager extends LevelCreator implements DataLevelManager {
-  state: string;
   currentLevel = 1;
   levelsState = [
     'finished-none',
@@ -16,11 +15,6 @@ export class LevelManager extends LevelCreator implements DataLevelManager {
     'finished-none',
     'finished-none',
   ];
-
-  constructor(state: string) {
-    super();
-    this.state = state;
-  }
 
   saveStateLevels(): void {
     localStorage.setItem('levels-state', JSON.stringify(this.levelsState));
@@ -57,29 +51,29 @@ export class LevelManager extends LevelCreator implements DataLevelManager {
     }
   }
 
-  setCurrentLevel(event: Event): void {
+  switchLevel(event: Event): void {
     const element = event.target as HTMLElement;
+    if (element.matches('.level-name') || element.matches('[progress = reset]')) {
+      if (element.matches('.level-name')) {
+        this.currentLevel = Number(element.getAttribute('level'));
+      }
+      if (element.matches('[progress = reset]')) {
+        this.currentLevel = 1;
+      }
+    }
+    this.setCurrentLevel(this.currentLevel);
+  }
+
+  setCurrentLevel(number: number): void {
+    this.currentLevel = number;
     const levelNames = document.querySelectorAll('.level-name');
-    if (element.matches('.level-name')) {
-      this.currentLevel = Number(element.getAttribute('level'));
-      levelNames.forEach((levelName) => {
-        if (Number(levelName.getAttribute('level')) === this.currentLevel) {
-          levelName.setAttribute('current', 'true');
-        } else {
-          levelName.setAttribute('current', 'false');
-        }
-      });
-    }
-    if (element.matches('[progress = reset]')) {
-      this.currentLevel = 1;
-      levelNames.forEach((levelName) => {
-        if (Number(levelName.getAttribute('level')) === this.currentLevel) {
-          levelName.setAttribute('current', 'true');
-        } else {
-          levelName.setAttribute('current', 'false');
-        }
-      });
-    }
+    levelNames.forEach((levelName) => {
+      if (Number(levelName.getAttribute('level')) === this.currentLevel) {
+        levelName.setAttribute('current', 'true');
+      } else {
+        levelName.setAttribute('current', 'false');
+      }
+    });
     this.loadLevel(this.currentLevel);
   }
 
@@ -88,7 +82,7 @@ export class LevelManager extends LevelCreator implements DataLevelManager {
     this.loadStateLevels();
     const levelBlock = document.querySelector('.game-level') as HTMLElement;
     levelBlock.addEventListener('click', this.setStateLevel.bind(this));
-    levelBlock.addEventListener('click', this.setCurrentLevel.bind(this));
+    levelBlock.addEventListener('click', this.switchLevel.bind(this));
     for (let i = 1; i <= this.levelsState.length; i += 1) {
       const levelTablet = document.createElement('div') as HTMLElement;
       levelTablet.classList.add('level-tablet');

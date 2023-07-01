@@ -4,6 +4,3 @@ import { LevelManager } from './components/game_initial/game_level/level-manager
 
 const game = new GameCreator();
 game.start();
-
-const level = new LevelManager('unfinished');
-level.createTabs();

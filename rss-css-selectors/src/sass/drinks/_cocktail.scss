@@ -10,6 +10,9 @@
   &[focus = true] {
     animation: glowing-drink 1800ms infinite;
   }
+  &.drink-true {
+    animation: pass-flight 1000ms;
+  }
 }
 
 .cocktail-main {

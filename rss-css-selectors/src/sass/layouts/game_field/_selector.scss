@@ -30,15 +30,28 @@
     }
 }
 
+.selector-wrong {
+    animation: wrong-shake 600ms;
+    background-color: $color-selector-background-wrong;
+}
+
+.selector-pass {
+    background-color: $color-selector-background-pass;
+}
+
 .selector-input {
     box-sizing: border-box;
     border-radius: 5px;
     height: 25px;
     width: 70%;
     border: solid 1px $color-selector-button;
+    &:focus {
+        outline: none;
+    }
 }
 
 .selector-button {
+    box-sizing: border-box;
     font-size: 1.4rem;
     display: flex;
     align-items: center;
@@ -47,6 +60,13 @@
     width: 20%;
     border-radius: 5px;
     background-color: $color-selector-button;
+    &:hover{
+        background-color: $color-selector-button-hover; 
+    }
+    &:active{
+        background-color: $color-selector-button-active; 
+        border: solid 2px $color-selector-button;
+    }
 }
 
 .selector-tips {
