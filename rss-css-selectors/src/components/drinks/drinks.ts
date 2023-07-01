@@ -72,8 +72,9 @@ export class Drinks implements DataDrinks {
     beverageCode.addEventListener('mouseout', this.leaveBeverage);
 
     beverageCode.classList.add('beverage-block-code');
+    beverageCode.setAttribute('beverage-code-number', `${number}`);
     glassCode.classList.add('glass-block-code');
-    glassCode.setAttribute('number', `${number}`);
+    glassCode.setAttribute('glass-code-number', `${number}`);
 
     let openedTag = `<${this.glass}`;
     if (this.color === 'blue' || this.color === 'green' || this.color === 'purple') {
@@ -96,45 +97,127 @@ export class Drinks implements DataDrinks {
 
   showGlass(event: Event): void {
     const element = event.target as HTMLElement;
-    const elementNumber = element.getAttribute('number');
-    const drinks = document.querySelector('.visual-shelf-top-bar') as HTMLElement;
-    if (element.matches('.glass-block-code') && elementNumber !== null) {
-      const searchedElement = drinks.querySelector(`[number='${elementNumber}']`) as HTMLElement;
-      searchedElement.setAttribute('focus', 'true');
+    const glassNumber = element.getAttribute('glass-code-number');
+    if (element.matches('.glass-block-code') && glassNumber !== null) {
+      const glass = document.querySelector(`[glass-drink-number='${glassNumber}']`) as HTMLElement;
+      glass.setAttribute('focus', 'true');
+
+      const helper = document.createElement('div');
+      if (element.textContent !== null) {
+        const text = element.textContent.slice(0, element.textContent.indexOf('>') + 1);
+        helper.innerText = text;
+      }
+      helper.classList.add('helper');
+      glass.append(helper);
     }
   }
 
   leaveGlass(event: Event): void {
     const element = event.target as HTMLElement;
-    const elementNumber = element.getAttribute('number');
-    const drinks = document.querySelector('.visual-shelf-top-bar') as HTMLElement;
-    if (element.matches('.glass-block-code') && elementNumber !== null) {
-      const searchedElement = drinks.querySelector(`[number='${elementNumber}']`) as HTMLElement;
-      searchedElement.setAttribute('focus', 'false');
+    const glassNumber = element.getAttribute('glass-code-number');
+    if (element.matches('.glass-block-code') && glassNumber !== null) {
+      const glass = document.querySelector(`[glass-drink-number='${glassNumber}']`) as HTMLElement;
+      glass.setAttribute('focus', 'false');
+
+      const helper = document.querySelector('.helper') as HTMLElement;
+      helper.remove();
     }
   }
 
   showBeverage(event: Event): void {
     const element = event.target as HTMLElement;
-    const parentElement = element.parentElement as HTMLElement;
-    const elementNumber = parentElement.getAttribute('number');
-    const drinks = document.querySelector('.visual-shelf-top-bar') as HTMLElement;
-    if (element.matches('.beverage-block-code') && elementNumber !== null) {
-      const searchedGlass = drinks.querySelector(`[number='${elementNumber}']`) as HTMLElement;
-      const searchedElement = searchedGlass.querySelector('[contain=true]') as HTMLElement;
-      searchedElement.setAttribute('focus', 'true');
+    const beverageNumber = element.getAttribute('beverage-code-number');
+    if (element.matches('.beverage-block-code') && beverageNumber !== null) {
+      const glass = document.querySelector(`[glass-drink-number='${beverageNumber}']`) as HTMLElement;
+      const beverage = document.querySelector(`[beverage-drink-number='${beverageNumber}']`) as HTMLElement;
+      beverage.setAttribute('focus', 'true');
+
+      const helper = document.createElement('div');
+
+      if (element.textContent !== null) {
+        const text = element.textContent.slice(0, element.textContent.indexOf('>') + 1);
+        helper.innerText = text;
+      }
+      helper.classList.add('helper');
+      helper.setAttribute('focus', 'true');
+      glass.setAttribute('move', 'false');
+      glass.append(helper);
     }
   }
 
   leaveBeverage(event: Event): void {
     const element = event.target as HTMLElement;
-    const parentElement = element.parentElement as HTMLElement;
-    const elementNumber = parentElement.getAttribute('number');
-    const drinks = document.querySelector('.visual-shelf-top-bar') as HTMLElement;
-    if (element.matches('.beverage-block-code') && elementNumber !== null) {
-      const searchedGlass = drinks.querySelector(`[number='${elementNumber}']`) as HTMLElement;
-      const searchedElement = searchedGlass.querySelector('[contain=true]') as HTMLElement;
-      searchedElement.setAttribute('focus', 'false');
+    const beverageNumber = element.getAttribute('beverage-code-number');
+    if (element.matches('.beverage-block-code') && beverageNumber !== null) {
+      const beverage = document.querySelector(`[beverage-drink-number='${beverageNumber}']`) as HTMLElement;
+      const glass = document.querySelector(`[glass-drink-number='${beverageNumber}']`) as HTMLElement;
+      beverage.setAttribute('focus', 'false');
+
+      const helper = document.querySelector('.helper') as HTMLElement;
+      helper.remove();
+      glass.setAttribute('move', 'true');
+    }
+  }
+
+  showCode(event: Event): void {
+    const element = event.target as HTMLElement;
+    const beverageNumber = element.getAttribute('beverage-drink-number');
+    let glassNumber: string | null = '';
+    if (this instanceof HTMLElement) {
+      glassNumber = this.getAttribute('glass-drink-number');
+    }
+    if (element.matches(`[contain='true']`) && beverageNumber !== null) {
+      const codeBeverage = document.querySelector(`[beverage-code-number='${beverageNumber}']`) as HTMLElement;
+      codeBeverage.setAttribute('focus', 'true');
+      const helper = document.createElement('div');
+      helper.classList.add('helper-vis');
+      helper.setAttribute('focus', 'true');
+
+      if (codeBeverage.textContent !== null) {
+        const text = codeBeverage.textContent.slice(0, codeBeverage.textContent.indexOf('>') + 1);
+        helper.innerText = text;
+      }
+
+      if (this instanceof HTMLElement) {
+        this.append(helper);
+      }
+    } else if (glassNumber !== null) {
+      const codeGlass = document.querySelector(`[glass-code-number='${glassNumber}']`) as HTMLElement;
+      codeGlass.setAttribute('focus', 'true');
+
+      const helper = document.createElement('div');
+      helper.classList.add('helper-vis');
+      helper.setAttribute('focus', 'true');
+
+      if (codeGlass.textContent !== null) {
+        const text = codeGlass.textContent.slice(0, codeGlass.textContent.indexOf('>') + 1);
+        helper.innerText = text;
+      }
+
+      if (this instanceof HTMLElement) {
+        this.append(helper);
+      }
+    }
+  }
+
+  leaveCode(event: Event): void {
+    const element = event.target as HTMLElement;
+    const beverageNumber = element.getAttribute('beverage-drink-number');
+    let glassNumber: string | null = '';
+    if (this instanceof HTMLElement) {
+      glassNumber = this.getAttribute('glass-drink-number');
+    }
+    if (element.matches(`[contain='true']`) && beverageNumber !== null) {
+      const codeBeverage = document.querySelector(`[beverage-code-number='${beverageNumber}']`) as HTMLElement;
+      codeBeverage.setAttribute('focus', 'false');
+      const helper = document.querySelector('.helper-vis') as HTMLElement;
+      helper.remove();
+    } else if (glassNumber !== null) {
+      const codeGlass = document.querySelector(`[glass-code-number='${glassNumber}']`) as HTMLElement;
+      codeGlass.setAttribute('focus', 'false');
+
+      const helper = document.querySelector('.helper-vis') as HTMLElement;
+      helper.remove();
     }
   }
 
@@ -148,8 +231,11 @@ export class Drinks implements DataDrinks {
     const wallLeft = document.createElement('div') as HTMLElement;
     const wallRight = document.createElement('div') as HTMLElement;
 
-    drink.setAttribute('number', `${number}`);
     contain.setAttribute('contain', 'true');
+    contain.setAttribute('beverage-drink-number', `${number}`);
+    drink.setAttribute('glass-drink-number', `${number}`);
+    drink.addEventListener('mouseover', this.showCode);
+    drink.addEventListener('mouseout', this.leaveCode);
 
     if (this.glass === 'tumbler') {
       drink.classList.add('tumbler-drink');
@@ -203,7 +289,6 @@ export class Drinks implements DataDrinks {
     }
 
     drink.setAttribute('move', 'true');
-
     shelf.append(drink);
   }
 }

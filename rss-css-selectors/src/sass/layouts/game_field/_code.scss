@@ -60,6 +60,9 @@
     &:hover{
         color: $color-code-glass;
     }
+    &[focus = true] {
+        color: $color-code-beverage;
+    }
 }
 
 .beverage-block-code {
@@ -72,6 +75,9 @@
         height: 12px;
     }
     &:hover{
+        color: $color-code-beverage;
+    }
+    &[focus = true] {
         color: $color-code-beverage;
     }
 }
