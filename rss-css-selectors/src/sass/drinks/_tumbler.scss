@@ -24,9 +24,12 @@
 
 .tumbler-contain {
   align-self: flex-end;
-  height: 0%;
+  height: 90%;
   width: 24px;
   background-color: orange;
+  &[fullness = half] {
+    height: 45%;
+  }
   &[focus = true] {
     animation: glowing-beverage 900ms infinite;
   }

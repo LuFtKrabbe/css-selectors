@@ -21,15 +21,23 @@ export enum BEVERAGE {
   NONE = 'none',
 }
 
+export enum FULLNESS {
+  FULL = 'full',
+  HALF = 'half',
+  NONE = 'none',
+}
+
 export class Drinks implements DataDrinks {
   glass: string;
   color: string;
   beverage: string;
+  fullness: string;
+
   colorsGlasses = {
     blue: '#c27502',
     green: '#1fbf5f',
     purple: '#821fbf',
-    none: '#faebd799',
+    none: '#faebd7',
   };
 
   colorsBevereges = {
@@ -40,16 +48,16 @@ export class Drinks implements DataDrinks {
     none: '#faebd700',
   };
 
-  constructor(glass: GLASS, color: COLOR, beverage: BEVERAGE) {
+  constructor(glass: GLASS, color: COLOR, beverage: BEVERAGE, fullness: FULLNESS) {
     this.glass = glass;
     this.color = color;
     this.beverage = beverage;
+    this.fullness = fullness;
   }
 
   private setBeverageColor(): string {
-    const transparency = 220; // 0 - 255
     if (this.beverage === 'juice' || this.beverage === 'wine' || this.beverage === 'milk' || this.beverage === 'cola') {
-      return this.colorsBevereges[this.beverage] + ('0' + transparency.toString(16)).slice(-2);
+      return this.colorsBevereges[this.beverage];
     }
     return this.colorsBevereges.none;
   }
@@ -58,7 +66,7 @@ export class Drinks implements DataDrinks {
     if (this.color === 'blue' || this.color === 'green' || this.color === 'purple') {
       return this.colorsGlasses[this.color] + ('0' + transparency.toString(16)).slice(-2);
     }
-    return this.colorsGlasses.none;
+    return this.colorsGlasses.none + ('0' + transparency.toString(16)).slice(-2);
   }
 
   createCode(number: number): void {
@@ -86,7 +94,7 @@ export class Drinks implements DataDrinks {
       beverageCode.innerText = `<${this.beverage}`;
     }
     if (this.beverage === 'juice' || this.beverage === 'wine' || this.beverage === 'milk' || this.beverage === 'cola') {
-      beverageCode.innerText += ` class=half>`;
+      beverageCode.innerText += ` class=${this.fullness}>`;
     }
     const closedTag = `</${this.glass}>`;
 
@@ -221,7 +229,7 @@ export class Drinks implements DataDrinks {
     }
   }
 
-  createDrink(fullness: number, number: number, answer: string): void {
+  createDrink(number: number, answer: string): void {
     const shelf = document.querySelector('.visual-shelf-top-bar') as HTMLElement;
     const drink = document.createElement('div') as HTMLElement;
     const main = document.createElement('div') as HTMLElement;
@@ -249,7 +257,6 @@ export class Drinks implements DataDrinks {
       main.append(wallLeft, contain, wallRight);
       drink.append(main, bottom);
 
-      contain.style.height = `${fullness - 15}%`;
       contain.style.backgroundColor = this.setBeverageColor();
       main.style.backgroundColor = this.setGlassColor(80);
       wallLeft.style.backgroundColor = this.setGlassColor(80);
@@ -288,7 +295,12 @@ export class Drinks implements DataDrinks {
       stem.style.backgroundColor = this.setGlassColor(120);
       bottom.style.backgroundColor = this.setGlassColor(120);
     }
-    if (this.beverage === 'none') {
+
+    if (this.fullness === 'half') {
+      contain.setAttribute('fullness', 'half');
+    }
+
+    if (this.beverage === 'none' || this.fullness === 'none') {
       contain.remove();
     }
 

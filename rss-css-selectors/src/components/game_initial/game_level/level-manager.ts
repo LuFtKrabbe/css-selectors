@@ -128,7 +128,7 @@ export class LevelManager extends LevelCreator implements DataLevelManager {
 
     const levelResetButton = document.createElement('div') as HTMLElement;
     levelResetButton.classList.add('level-reset');
-    levelResetButton.innerHTML = 'Reset progress';
+    levelResetButton.innerHTML = 'RESET';
     levelBlock.append(levelResetButton);
 
     levelHelpButton.addEventListener('click', this.useLevelTip.bind(this));

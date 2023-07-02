@@ -19,22 +19,28 @@
 
 .balloon-main {
   position: relative;
-  height: 20px; 
   width: 32px;
   border-bottom: 30px solid $color-tumbler-glass;
   border-bottom-left-radius: 60%;
   border-bottom-right-radius: 60%;
+  margin: 20px 0 0 0;
 }
 
 .balloon-contain {
   position: absolute;
-  top: 16px;
+  top: 4px;
   left: 3px;
-  height: 8px;
   width: 26px;
   border-bottom: 23px solid #ffffff;
-  border-bottom-left-radius: 100%;
-  border-bottom-right-radius: 100%;
+  border-bottom-left-radius: 24px;
+  border-bottom-right-radius: 24px;
+  &[fullness = half] {
+    top: 13px;
+    left: 3px;
+    border-bottom: 14px solid #ffffff;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+  }
   &[focus = true] {
     animation: glowing-beverage 900ms infinite;
   }
