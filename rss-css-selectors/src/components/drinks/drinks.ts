@@ -34,7 +34,7 @@ export class Drinks implements DataDrinks {
   fullness: string;
 
   colorsGlasses = {
-    blue: '#c27502',
+    blue: '#47b3ff',
     green: '#1fbf5f',
     purple: '#821fbf',
     none: '#faebd7',
@@ -42,8 +42,8 @@ export class Drinks implements DataDrinks {
 
   colorsBevereges = {
     juice: '#c27502',
-    wine: '#1fbf5f',
-    milk: '#821fbf',
+    wine: '#8c0000',
+    milk: '#ededdd',
     cola: '#4d320a',
     none: '#faebd700',
   };
@@ -86,7 +86,7 @@ export class Drinks implements DataDrinks {
 
     let openedTag = `<${this.glass}`;
     if (this.color === 'blue' || this.color === 'green' || this.color === 'purple') {
-      openedTag += ` id=${this.color}`;
+      openedTag += ` id="${this.color}"`;
     }
     openedTag += '>';
 
@@ -94,7 +94,11 @@ export class Drinks implements DataDrinks {
       beverageCode.innerText = `<${this.beverage}`;
     }
     if (this.beverage === 'juice' || this.beverage === 'wine' || this.beverage === 'milk' || this.beverage === 'cola') {
-      beverageCode.innerText += ` class=${this.fullness}>`;
+      if (this.fullness === 'half') {
+        beverageCode.innerText += ` class=${this.fullness}>`;
+      } else {
+        beverageCode.innerText += `>`;
+      }
     }
     const closedTag = `</${this.glass}>`;
 

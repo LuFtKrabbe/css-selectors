@@ -66,12 +66,18 @@
 }
 
 .selector-tips {
-    height: 245px;
+    display: flex;
+    justify-content: center;
+    font-size: 1.5rem;
+    height: 240px;
     width: 100%;
     border-radius: 5px;
     background-color: $color-selector-background;
+    padding: 5px 0 0 0;
     transition: 300ms ease;
     @include media-tablet {
+        align-items: center;
+        padding: 0 0 0 0;
         height: 30px;
     }
 }
