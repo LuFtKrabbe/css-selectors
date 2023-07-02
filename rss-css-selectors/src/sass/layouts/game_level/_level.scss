@@ -82,6 +82,21 @@
     }
 }
 
+.level-help {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    width: 80%;
+    height: 22px;
+    border: solid 2px $color-level-help-border;
+    border-radius: 5px;
+    margin: 7px 0 0 0;
+    &:hover {
+        background-color: $color-level-help-hover;
+    }
+}
+
 .level-reset {
     display: flex;
     justify-content: center;

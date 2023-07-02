@@ -2,8 +2,8 @@ import { type DataLevelManager } from '../../types/level-manager-interfaces';
 import { LevelCreator } from './level-creator';
 
 export class LevelManager extends LevelCreator implements DataLevelManager {
-  currentLevel = 1;
-  levelsState = [
+  static currentLevel = 1;
+  static levelsState = [
     'finished-none',
     'finished-none',
     'finished-none',
@@ -17,73 +17,82 @@ export class LevelManager extends LevelCreator implements DataLevelManager {
   ];
 
   saveStateLevels(): void {
-    localStorage.setItem('levels-state', JSON.stringify(this.levelsState));
-    localStorage.setItem('current-level', JSON.stringify(this.currentLevel));
+    localStorage.setItem('levels-state', JSON.stringify(LevelManager.levelsState));
+    localStorage.setItem('current-level', JSON.stringify(LevelManager.currentLevel));
   }
 
   loadStateLevels(): void {
     const storageLevelsState: string | null = localStorage.getItem('levels-state');
     if (storageLevelsState !== null && storageLevelsState !== 'undefined') {
-      this.levelsState = JSON.parse(storageLevelsState);
+      LevelManager.levelsState = JSON.parse(storageLevelsState);
     }
     const storageCurrentLevel: string | null = localStorage.getItem('current-level');
     if (storageCurrentLevel !== null && storageCurrentLevel !== 'undefined') {
-      this.currentLevel = JSON.parse(storageCurrentLevel);
+      LevelManager.currentLevel = JSON.parse(storageCurrentLevel);
     }
   }
 
-  setStateLevel(event: Event): void {
+  useLevelTip(event: Event): void {
     const element = event.target as HTMLElement;
     const elementSibling = element.previousElementSibling as HTMLElement;
     if (element.matches('[state = finished-none]') && elementSibling.matches('[current = true]')) {
-      element.setAttribute('state', 'finished-tip');
-      element.innerHTML = '&#128504';
-      const levelNumber = Number(element.getAttribute('level')) - 1;
-      this.levelsState[levelNumber] = 'finished-tip';
+      this.setStateLevel('finished-tip');
     }
-    if (element.matches('[progress = reset]')) {
-      this.levelsState.fill('finished-none');
-      const levelStates = document.querySelectorAll('.level-state');
-      levelStates.forEach((levelState) => {
-        levelState.setAttribute('state', 'finished-none');
-        levelState.innerHTML = '?';
-      });
+    if (element.matches('.level-help')) {
+      this.setStateLevel('finished-tip');
     }
+  }
+
+  setStateLevel(state: string): void {
+    const currentLevel = document.querySelector(`[current='true']`) as HTMLElement;
+    const currentLevelState = currentLevel.nextElementSibling as HTMLElement;
+    currentLevelState.setAttribute('state', `${state}`);
+    currentLevelState.innerHTML = '&#128504';
+    const levelNumber = Number(currentLevel.getAttribute('level')) - 1;
+    LevelManager.levelsState[levelNumber] = `${state}`;
+  }
+
+  resetLevels(): void {
+    LevelManager.currentLevel = 1;
+    LevelManager.levelsState.fill('finished-none');
+
+    document.querySelectorAll('.level-state').forEach((state) => {
+      state.setAttribute('state', 'finished-none');
+      state.innerHTML = '?';
+    });
+
+    this.setCurrentLevel();
   }
 
   switchLevel(event: Event): void {
     const element = event.target as HTMLElement;
-    if (element.matches('.level-name') || element.matches('[progress = reset]')) {
-      if (element.matches('.level-name')) {
-        this.currentLevel = Number(element.getAttribute('level'));
-      }
-      if (element.matches('[progress = reset]')) {
-        this.currentLevel = 1;
-      }
+    if (element.matches('.level-name')) {
+      LevelManager.currentLevel = Number(element.getAttribute('level'));
     }
-    this.setCurrentLevel(this.currentLevel);
+    this.setCurrentLevel();
   }
 
-  setCurrentLevel(number: number): void {
-    this.currentLevel = number;
-    const levelNames = document.querySelectorAll('.level-name');
-    levelNames.forEach((levelName) => {
-      if (Number(levelName.getAttribute('level')) === this.currentLevel) {
+  setCurrentLevel(): void {
+    document.querySelectorAll('.level-name').forEach((levelName) => {
+      if (Number(levelName.getAttribute('level')) === LevelManager.currentLevel) {
         levelName.setAttribute('current', 'true');
       } else {
         levelName.setAttribute('current', 'false');
       }
     });
-    this.loadLevel(this.currentLevel);
+    this.loadLevel(LevelManager.currentLevel);
   }
 
   createTabs(): void {
     window.addEventListener('beforeunload', this.saveStateLevels.bind(this));
     this.loadStateLevels();
+
     const levelBlock = document.querySelector('.game-level') as HTMLElement;
-    levelBlock.addEventListener('click', this.setStateLevel.bind(this));
+
+    levelBlock.addEventListener('click', this.useLevelTip.bind(this));
     levelBlock.addEventListener('click', this.switchLevel.bind(this));
-    for (let i = 1; i <= this.levelsState.length; i += 1) {
+
+    for (let i = 1; i <= LevelManager.levelsState.length; i += 1) {
       const levelTablet = document.createElement('div') as HTMLElement;
       levelTablet.classList.add('level-tablet');
       levelTablet.setAttribute('level', `${i}`);
@@ -93,18 +102,18 @@ export class LevelManager extends LevelCreator implements DataLevelManager {
       levelName.classList.add('level-name');
       levelName.innerText = `Level ${i}`;
       levelName.setAttribute('level', `${i}`);
-      if (this.currentLevel === i) {
+      if (LevelManager.currentLevel === i) {
         levelName.setAttribute('current', 'true');
-        this.loadLevel(this.currentLevel);
+        this.loadLevel(LevelManager.currentLevel);
       } else {
         levelName.setAttribute('current', 'false');
       }
 
       const levelState = document.createElement('div') as HTMLElement;
       levelState.classList.add('level-state');
-      levelState.setAttribute('state', `${this.levelsState[i - 1]}`);
+      levelState.setAttribute('state', `${LevelManager.levelsState[i - 1]}`);
       levelState.setAttribute('level', `${i}`);
-      if (this.levelsState[i - 1] === 'finished-none') {
+      if (LevelManager.levelsState[i - 1] === 'finished-none') {
         levelState.innerHTML = '?';
       } else {
         levelState.innerHTML = '&#128504';
@@ -112,10 +121,11 @@ export class LevelManager extends LevelCreator implements DataLevelManager {
       levelTablet.append(levelName, levelState);
     }
 
-    const levelReset = document.createElement('div') as HTMLElement;
-    levelReset.classList.add('level-reset');
-    levelReset.innerHTML = 'Reset progress';
-    levelReset.setAttribute('progress', 'reset');
-    levelBlock.append(levelReset);
+    const levelResetButton = document.createElement('div') as HTMLElement;
+    levelResetButton.classList.add('level-reset');
+    levelResetButton.innerHTML = 'Reset progress';
+    levelBlock.append(levelResetButton);
+
+    levelResetButton.addEventListener('click', this.resetLevels.bind(this));
   }
 }

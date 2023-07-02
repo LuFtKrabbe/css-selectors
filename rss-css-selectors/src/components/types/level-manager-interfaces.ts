@@ -1,6 +1,6 @@
 export interface DataLevelManager {
   saveStateLevels: () => void;
   loadStateLevels: () => void;
-  setStateLevel: (event: Event) => void;
+  setStateLevel: (state: string) => void;
   createTabs: () => void;
 }

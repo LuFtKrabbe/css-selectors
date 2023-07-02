@@ -221,7 +221,7 @@ export class Drinks implements DataDrinks {
     }
   }
 
-  createDrink(fullness: number, number: number): void {
+  createDrink(fullness: number, number: number, answer: string): void {
     const shelf = document.querySelector('.visual-shelf-top-bar') as HTMLElement;
     const drink = document.createElement('div') as HTMLElement;
     const main = document.createElement('div') as HTMLElement;
@@ -234,6 +234,7 @@ export class Drinks implements DataDrinks {
     contain.setAttribute('contain', 'true');
     contain.setAttribute('beverage-drink-number', `${number}`);
     drink.setAttribute('glass-drink-number', `${number}`);
+    drink.setAttribute('answer', `${answer}`);
     drink.addEventListener('mouseover', this.showCode);
     drink.addEventListener('mouseout', this.leaveCode);
 

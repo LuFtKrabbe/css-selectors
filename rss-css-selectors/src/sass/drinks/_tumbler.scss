@@ -5,14 +5,11 @@
   flex-direction: column;
   position: relative;
   width: 30px;
-  &[move = true] {
-    animation: moving 1800ms infinite;
-  }
   &[focus = true] {
     animation: glowing-drink 1800ms infinite;
   }
-  &.drink-true {
-    animation: pass-flight 1000ms;
+  &.drink-level-passed {
+    animation: correct-level-pass 1200ms;
   }
 }
 
