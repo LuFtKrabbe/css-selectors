@@ -1,4 +1,4 @@
-import { type DataDrinks } from '../types/drinks-interfaces';
+import { type DataDrinks } from '../types/interfaces';
 
 export enum GLASS {
   TUMBLER = 'tumbler',

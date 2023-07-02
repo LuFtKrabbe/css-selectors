@@ -1,4 +1,4 @@
-import { type DataLevelChecker } from '../../types/level-checker-interfaces';
+import { type DataLevelChecker } from '../../types/interfaces';
 import { LevelCreator } from './level-creator';
 import { LevelManager } from './level-manager';
 

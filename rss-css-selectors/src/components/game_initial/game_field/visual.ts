@@ -1,4 +1,4 @@
-import { type DataVisualBlock } from '../../types/visual-interfaces';
+import { type DataVisualBlock } from '../../types/interfaces';
 
 export class VisualBlock implements DataVisualBlock {
   draw(): void {

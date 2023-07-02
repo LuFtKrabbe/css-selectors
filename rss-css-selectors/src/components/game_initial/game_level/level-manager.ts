@@ -1,4 +1,4 @@
-import { type DataLevelManager } from '../../types/level-manager-interfaces';
+import { type DataLevelManager } from '../../types/interfaces';
 import { LevelCreator } from './level-creator';
 
 export class LevelManager extends LevelCreator implements DataLevelManager {

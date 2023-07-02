@@ -1,4 +1,4 @@
-import { type DataLevelBlock } from '../../types/level-interfaces';
+import { type DataLevelBlock } from '../../types/interfaces';
 
 export class LevelBlock implements DataLevelBlock {
   draw(): void {

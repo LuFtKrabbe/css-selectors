@@ -1,4 +1,4 @@
-import { type DataParts } from '../types/parts-interfaces';
+import { type DataParts } from '../types/interfaces';
 
 export class Parts implements DataParts {
   draw(): void {

@@ -1,4 +1,4 @@
-import { type DataSelectorBlock } from '../../types/selector-interfaces';
+import { type DataSelectorBlock } from '../../types/interfaces';
 
 export class SelectorBlock implements DataSelectorBlock {
   draw(): void {

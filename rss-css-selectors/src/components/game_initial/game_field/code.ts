@@ -1,4 +1,4 @@
-import { type DataCodeBlock } from '../../types/code-interfaces';
+import { type DataCodeBlock } from '../../types/interfaces';
 
 export class CodeBlock implements DataCodeBlock {
   draw(): void {

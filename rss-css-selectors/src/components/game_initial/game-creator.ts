@@ -6,14 +6,16 @@ import { SelectorBlock } from './game_field/selector';
 import { LevelBlock } from './game_level/level';
 import { LevelManager } from './game_level/level-manager';
 import { LevelChecker } from './game_level/level-checker';
-import { type DataParts } from '../types/parts-interfaces';
-import { type DataVisualBlock } from '../types/visual-interfaces';
-import { type DataSelectorCodeBlock } from '../types/selector-code-interfaces';
-import { type DataCodeBlock } from '../types/code-interfaces';
-import { type DataSelectorBlock } from '../types/selector-interfaces';
-import { type DataLevelBlock } from '../types/level-interfaces';
-import { type DataLevelManager } from '../types/level-manager-interfaces';
-import { type DataLevelChecker } from '../types/level-checker-interfaces';
+import {
+  type DataParts,
+  type DataVisualBlock,
+  type DataSelectorCodeBlock,
+  type DataSelectorBlock,
+  type DataCodeBlock,
+  type DataLevelBlock,
+  type DataLevelManager,
+  type DataLevelChecker,
+} from '../types/interfaces';
 
 export class GameCreator {
   parts: DataParts;

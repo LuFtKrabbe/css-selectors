@@ -1,4 +1,4 @@
-import { type DataLevelCreator } from '../../types/level-creator-interfaces';
+import { type DataLevelCreator } from '../../types/interfaces';
 import { Drinks, GLASS, COLOR, BEVERAGE, FULLNESS } from '../../drinks/drinks';
 
 export class LevelCreator implements DataLevelCreator {
@@ -63,7 +63,7 @@ export class LevelCreator implements DataLevelCreator {
       const drink2 = new Drinks(GLASS.COCKTAIL, COLOR.PURPLE, BEVERAGE.NONE, FULLNESS.NONE);
       const drink3 = new Drinks(GLASS.BALLOON, COLOR.GREEN, BEVERAGE.NONE, FULLNESS.NONE);
       const drink4 = new Drinks(GLASS.COCKTAIL, COLOR.NONE, BEVERAGE.NONE, FULLNESS.NONE);
-      const drink5 = new Drinks(GLASS.COCKTAIL, COLOR.GREEN, BEVERAGE.NONE, FULLNESS.NONE);
+      const drink5 = new Drinks(GLASS.COCKTAIL, COLOR.BLUE, BEVERAGE.NONE, FULLNESS.NONE);
 
       LevelCreator.drinksArr = [drink1, drink2, drink3, drink4, drink5];
       LevelCreator.drinkAnswer = ['false', 'true', 'false', 'true', 'true'];
