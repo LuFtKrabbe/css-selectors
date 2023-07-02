@@ -121,11 +121,17 @@ export class LevelManager extends LevelCreator implements DataLevelManager {
       levelTablet.append(levelName, levelState);
     }
 
+    const levelHelpButton = document.createElement('div') as HTMLElement;
+    levelHelpButton.classList.add('level-help');
+    levelHelpButton.innerHTML = 'HELP';
+    levelBlock.append(levelHelpButton);
+
     const levelResetButton = document.createElement('div') as HTMLElement;
     levelResetButton.classList.add('level-reset');
     levelResetButton.innerHTML = 'Reset progress';
     levelBlock.append(levelResetButton);
 
+    levelHelpButton.addEventListener('click', this.useLevelTip.bind(this));
     levelResetButton.addEventListener('click', this.resetLevels.bind(this));
   }
 }
