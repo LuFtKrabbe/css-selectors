@@ -27,7 +27,7 @@ export class LevelCreator implements DataLevelCreator {
       LevelCreator.levelAnswers = ['tumbler', 'tumbler:empty'];
       LevelCreator.levelQuestion = 'Select the TUMBLER glass';
     }
-    if (levelNumber === 2) {
+    if (levelNumber === 2 || levelNumber === '2') {
       const drink1 = new Drinks(GLASS.TUMBLER, COLOR.NONE, BEVERAGE.NONE, FULLNESS.NONE);
       const drink2 = new Drinks(GLASS.BALLOON, COLOR.NONE, BEVERAGE.NONE, FULLNESS.NONE);
       const drink3 = new Drinks(GLASS.BALLOON, COLOR.NONE, BEVERAGE.NONE, FULLNESS.NONE);
@@ -38,7 +38,7 @@ export class LevelCreator implements DataLevelCreator {
       LevelCreator.levelQuestion = 'Select the BALLOON glasses';
     }
 
-    if (levelNumber === 3) {
+    if (levelNumber === 3 || levelNumber === '3') {
       const drink1 = new Drinks(GLASS.TUMBLER, COLOR.NONE, BEVERAGE.NONE, FULLNESS.NONE);
       const drink2 = new Drinks(GLASS.COCKTAIL, COLOR.PURPLE, BEVERAGE.NONE, FULLNESS.NONE);
       const drink3 = new Drinks(GLASS.BALLOON, COLOR.NONE, BEVERAGE.NONE, FULLNESS.NONE);
@@ -49,7 +49,7 @@ export class LevelCreator implements DataLevelCreator {
       LevelCreator.levelQuestion = 'Select the PURPLE COCKTAIL glass';
     }
 
-    if (levelNumber === 4) {
+    if (levelNumber === 4 || levelNumber === '4') {
       const drink1 = new Drinks(GLASS.TUMBLER, COLOR.GREEN, BEVERAGE.NONE, FULLNESS.NONE);
       const drink2 = new Drinks(GLASS.TUMBLER, COLOR.NONE, BEVERAGE.NONE, FULLNESS.NONE);
       const drink3 = new Drinks(GLASS.COCKTAIL, COLOR.NONE, BEVERAGE.NONE, FULLNESS.NONE);
@@ -61,7 +61,7 @@ export class LevelCreator implements DataLevelCreator {
       LevelCreator.levelQuestion = 'Select GREEN glasses';
     }
 
-    if (levelNumber === 5) {
+    if (levelNumber === 5 || levelNumber === '5') {
       const drink1 = new Drinks(GLASS.TUMBLER, COLOR.NONE, BEVERAGE.NONE, FULLNESS.NONE);
       const drink2 = new Drinks(GLASS.COCKTAIL, COLOR.PURPLE, BEVERAGE.NONE, FULLNESS.NONE);
       const drink3 = new Drinks(GLASS.BALLOON, COLOR.GREEN, BEVERAGE.NONE, FULLNESS.NONE);
@@ -74,7 +74,7 @@ export class LevelCreator implements DataLevelCreator {
       LevelCreator.levelQuestion = 'Select COCKTAIL glasses';
     }
 
-    if (levelNumber === 6) {
+    if (levelNumber === 6 || levelNumber === '6') {
       const drink1 = new Drinks(GLASS.BALLOON, COLOR.BLUE, BEVERAGE.COLA, FULLNESS.FULL);
       const drink2 = new Drinks(GLASS.COCKTAIL, COLOR.BLUE, BEVERAGE.COLA, FULLNESS.FULL);
       const drink3 = new Drinks(GLASS.TUMBLER, COLOR.PURPLE, BEVERAGE.NONE, FULLNESS.NONE);
@@ -87,7 +87,7 @@ export class LevelCreator implements DataLevelCreator {
       LevelCreator.levelQuestion = 'Select glasses with COLA';
     }
 
-    if (levelNumber === 7) {
+    if (levelNumber === 7 || levelNumber === '7') {
       const drink1 = new Drinks(GLASS.COCKTAIL, COLOR.BLUE, BEVERAGE.WINE, FULLNESS.FULL);
       const drink2 = new Drinks(GLASS.TUMBLER, COLOR.GREEN, BEVERAGE.MILK, FULLNESS.HALF);
       const drink3 = new Drinks(GLASS.TUMBLER, COLOR.NONE, BEVERAGE.MILK, FULLNESS.FULL);
@@ -100,7 +100,7 @@ export class LevelCreator implements DataLevelCreator {
       LevelCreator.levelQuestion = 'Select TUMBLER glasses with MILK';
     }
 
-    if (levelNumber === 8) {
+    if (levelNumber === 8 || levelNumber === '8') {
       const drink1 = new Drinks(GLASS.BALLOON, COLOR.BLUE, BEVERAGE.COLA, FULLNESS.FULL);
       const drink2 = new Drinks(GLASS.COCKTAIL, COLOR.NONE, BEVERAGE.JUICE, FULLNESS.HALF);
       const drink3 = new Drinks(GLASS.TUMBLER, COLOR.NONE, BEVERAGE.WINE, FULLNESS.FULL);
@@ -113,7 +113,7 @@ export class LevelCreator implements DataLevelCreator {
       LevelCreator.levelQuestion = 'Select the COCKTAIL glass with HALF portion of JUICE';
     }
 
-    if (levelNumber === 9) {
+    if (levelNumber === 9 || levelNumber === '9') {
       const drink1 = new Drinks(GLASS.COCKTAIL, COLOR.GREEN, BEVERAGE.COLA, FULLNESS.HALF);
       const drink2 = new Drinks(GLASS.BALLOON, COLOR.BLUE, BEVERAGE.WINE, FULLNESS.HALF);
       const drink3 = new Drinks(GLASS.COCKTAIL, COLOR.PURPLE, BEVERAGE.MILK, FULLNESS.FULL);
@@ -126,13 +126,13 @@ export class LevelCreator implements DataLevelCreator {
       LevelCreator.levelQuestion = 'Select BLUE BALLOON glasses with WINE';
     }
 
-    if (levelNumber === 10) {
+    if (levelNumber === 10 || levelNumber === '10') {
       const drink1 = new Drinks(GLASS.BALLOON, COLOR.BLUE, BEVERAGE.JUICE, FULLNESS.FULL);
       const drink2 = new Drinks(GLASS.TUMBLER, COLOR.GREEN, BEVERAGE.WINE, FULLNESS.HALF);
       const drink3 = new Drinks(GLASS.COCKTAIL, COLOR.NONE, BEVERAGE.COLA, FULLNESS.HALF);
       const drink4 = new Drinks(GLASS.BALLOON, COLOR.NONE, BEVERAGE.WINE, FULLNESS.FULL);
-      const drink5 = new Drinks(GLASS.COCKTAIL, COLOR.NONE, BEVERAGE.JUICE, FULLNESS.HALF);
-      const drink6 = new Drinks(GLASS.TUMBLER, COLOR.PURPLE, BEVERAGE.MILK, FULLNESS.FULL);
+      const drink5 = new Drinks(GLASS.COCKTAIL, COLOR.NONE, BEVERAGE.JUICE, FULLNESS.FULL);
+      const drink6 = new Drinks(GLASS.TUMBLER, COLOR.PURPLE, BEVERAGE.MILK, FULLNESS.HALF);
 
       LevelCreator.drinksArr = [drink1, drink2, drink3, drink4, drink5, drink6];
       LevelCreator.drinkAnswer = ['true', 'true', 'true', 'true', 'true', 'true'];
