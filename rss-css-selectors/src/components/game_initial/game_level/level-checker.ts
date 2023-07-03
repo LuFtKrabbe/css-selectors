@@ -34,15 +34,13 @@ export class LevelChecker extends LevelManager implements DataLevelChecker {
       if (animationEvent.animationName === 'correct-level-pass') {
         this.setStateLevel('finished-clear');
 
-        if (
-          LevelManager.currentLevel === LevelManager.levelsState.length &&
-          !LevelManager.levelsState.includes('finished-none')
-        ) {
+        if (!LevelManager.levelsState.includes('finished-none')) {
           this.clearLevel();
           backBoard.classList.add('win');
           backBoard.innerHTML = '! GAME WIN !';
         } else {
-          LevelManager.currentLevel += 1;
+          const nextLevel = LevelManager.levelsState.indexOf('finished-none') + 1;
+          LevelManager.currentLevel = nextLevel;
           this.setCurrentLevel();
         }
       }

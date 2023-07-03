@@ -11,8 +11,10 @@ export class LevelCreator implements DataLevelCreator {
   clearLevel(): void {
     const shelf = document.querySelector('.visual-shelf-top-bar') as HTMLElement;
     const code = document.querySelector('.code-block-lines') as HTMLElement;
+    const input = document.querySelector('.selector-input') as HTMLInputElement;
     shelf.replaceChildren();
     code.replaceChildren();
+    input.value = '';
   }
 
   loadLevel(levelNumber: number): void {

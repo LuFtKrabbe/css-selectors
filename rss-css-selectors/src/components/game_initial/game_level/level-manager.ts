@@ -111,6 +111,9 @@ export class LevelManager extends LevelCreator implements DataLevelManager {
     LevelManager.currentLevel = 1;
     LevelManager.levelsState.fill('finished-none');
 
+    const backBoard = document.querySelector('.visual-shelf-back-board') as HTMLElement;
+    backBoard.classList.remove('win');
+
     document.querySelectorAll('.level-state').forEach((state) => {
       state.setAttribute('state', 'finished-none');
       state.innerHTML = '?';
