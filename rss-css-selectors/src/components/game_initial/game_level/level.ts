@@ -7,6 +7,12 @@ export class LevelBlock implements DataLevelBlock {
     const levelBlock = document.createElement('div') as HTMLElement;
     levelBlock.classList.add('game-level');
 
+    const menuIcon = document.querySelector('.menu-icon') as HTMLElement;
+    menuIcon.addEventListener('click', () => {
+      menuIcon.classList.toggle('active');
+      levelBlock.classList.toggle('active');
+    });
+
     levelBlockWrapper.append(levelBlock);
   }
 }

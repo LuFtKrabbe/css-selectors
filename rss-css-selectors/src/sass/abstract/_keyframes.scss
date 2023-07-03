@@ -70,7 +70,19 @@
     transform: scale(1.0);
   }
   100% { 
-    transform: translateY(60px);
-    transform: scale(1.2);
+    transform: translateY(-180px);
+    transform: scale(1.8);
+  }
+}
+
+@keyframes glowing-sun {
+  0% { 
+    filter: drop-shadow(0 0 3px $color-header-menu-sun-shine);
+  }
+  50% { 
+    filter: drop-shadow(0 0 25px $color-header-menu-sun-shine);
+  }
+  100% { 
+    filter: drop-shadow(0 0 3px $color-header-menu-sun-shine);
   }
 }

@@ -1,8 +1,30 @@
 .header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
     box-sizing: border-box;
     width: 100%;
     height: 7vh;
     min-height: 50px;
     background-color: $color-header;
     border-bottom: solid 4px $color-header-border;
+}
+
+.menu-icon {
+    width: 0px;
+    transition: all 300ms ease;
+    animation: glowing-sun 1500ms infinite;
+    @include media-laptop {
+        box-sizing: border-box;
+        width: 45px;
+        height: 45px;
+        margin: 0 20px 0 0;
+        background-color: $color-header-menu;
+        border: solid 2px $color-header-menu-border;
+        border-radius: 25px;
+        &.active{
+            width: 25px;
+            height: 25px;
+        }
+    }
 }

@@ -76,7 +76,7 @@ export class LevelManager extends LevelCreator implements DataLevelManager {
       (element.matches('[state = finished-none]') && elementSibling.matches('[current = true]')) ||
       element.matches('.level-help')
     ) {
-      this.printLevelTip2();
+      this.printLevelTip();
       this.setStateLevel('finished-tip');
     }
     if (!LevelManager.levelsState.includes('finished-none')) {
@@ -86,22 +86,7 @@ export class LevelManager extends LevelCreator implements DataLevelManager {
     }
   }
 
-  /*
   printLevelTip(): void {
-    const input = document.querySelector('.selector-input') as HTMLInputElement;
-    let i = 0;
-    const answer = LevelCreator.levelAnswers[i];
-    let printer = setTimeout(function printLetter() {
-      if (i < answer.length) {
-        input.value += answer[i];
-        i += 1;
-        printer = setTimeout(printLetter, 200);
-      }
-    }, 200);
-  } 
-  */
-
-  printLevelTip2(): void {
     const input = document.querySelector('.selector-input') as HTMLInputElement;
     const answer = LevelCreator.levelAnswers[0];
     let i = 0;
@@ -112,7 +97,7 @@ export class LevelManager extends LevelCreator implements DataLevelManager {
       } else {
         clearInterval(printer);
       }
-    }, 200);
+    }, 150);
   }
 
   setStateLevel(state: string): void {

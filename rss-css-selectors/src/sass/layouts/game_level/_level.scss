@@ -23,6 +23,12 @@
     @include media-laptop {
         position: absolute;
         width: 0px;
+        right: 20px;
+        overflow-x: hidden;
+        &.active {
+            right: 20px;
+            width: 160px;
+        }
     }
 }
 
