@@ -1,5 +1,6 @@
 import { type DataLevelCreator } from '../../types/interfaces';
-import { Drinks, GLASS, COLOR, BEVERAGE, FULLNESS } from '../../drinks/drinks';
+import { GLASS, COLOR, BEVERAGE, FULLNESS } from '../../types/enums';
+import { Drinks } from '../../drinks/drinks';
 
 export class LevelCreator implements DataLevelCreator {
   static levelQuestion: string;
