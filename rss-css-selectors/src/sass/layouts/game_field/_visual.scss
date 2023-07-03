@@ -123,11 +123,10 @@
     align-items: center;
     position: relative;
     border-radius: 5px;
-    border: solid 2px $color-roof-stripe;
-    top: 20px;
+    border: solid 2px $color-helper-border;
     height: 16px;
     padding: 10px;
-    background-color: $color-background-wood;
+    background-color: $color-helper-background;
     &[focus = true] {
         animation: glowing-beverage 1800ms infinite;
     }
@@ -139,12 +138,12 @@
     align-items: center;
     position: absolute;
     border-radius: 5px;
-    border: solid 2px $color-roof-stripe;
+    border: solid 2px $color-helper-border;
     top: -40px;
     height: 16px;
     padding: 10px;
     margin: 0;
-    background-color: $color-background-wood;
+    background-color: $color-helper-background;
     &[focus = true] {
         animation: glowing-beverage 1800ms infinite;
     }
