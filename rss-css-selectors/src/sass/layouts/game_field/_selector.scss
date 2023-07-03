@@ -63,6 +63,10 @@
         background-color: $color-selector-button-active; 
         border: solid 2px $color-selector-button;
     }
+    &.push-key {
+        background-color: $color-selector-button-active; 
+        border: solid 2px $color-selector-button;
+    }
 }
 
 .selector-tips {
