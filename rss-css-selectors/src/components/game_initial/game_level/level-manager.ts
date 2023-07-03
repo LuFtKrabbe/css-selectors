@@ -64,7 +64,6 @@ export class LevelManager extends LevelCreator implements DataLevelManager {
 
     levelBlock.addEventListener('click', this.switchLevel.bind(this));
     levelBlock.addEventListener('click', this.useLevelTip.bind(this));
-    levelHelpButton.addEventListener('click', this.useLevelTip.bind(this));
     levelResetButton.addEventListener('click', this.resetLevels.bind(this));
     window.addEventListener('beforeunload', this.saveStateLevels.bind(this));
   }
@@ -72,21 +71,59 @@ export class LevelManager extends LevelCreator implements DataLevelManager {
   useLevelTip(event: Event): void {
     const element = event.target as HTMLElement;
     const elementSibling = element.previousElementSibling as HTMLElement;
+    const backBoard = document.querySelector('.visual-shelf-back-board') as HTMLElement;
     if (
       (element.matches('[state = finished-none]') && elementSibling.matches('[current = true]')) ||
       element.matches('.level-help')
     ) {
+      this.printLevelTip2();
       this.setStateLevel('finished-tip');
     }
+    if (!LevelManager.levelsState.includes('finished-none')) {
+      this.clearLevel();
+      backBoard.classList.add('win');
+      backBoard.innerHTML = '! GAME WIN !';
+    }
+  }
+
+  /*
+  printLevelTip(): void {
+    const input = document.querySelector('.selector-input') as HTMLInputElement;
+    let i = 0;
+    const answer = LevelCreator.levelAnswers[i];
+    let printer = setTimeout(function printLetter() {
+      if (i < answer.length) {
+        input.value += answer[i];
+        i += 1;
+        printer = setTimeout(printLetter, 200);
+      }
+    }, 200);
+  } 
+  */
+
+  printLevelTip2(): void {
+    const input = document.querySelector('.selector-input') as HTMLInputElement;
+    const answer = LevelCreator.levelAnswers[0];
+    let i = 0;
+    const printer = setInterval(() => {
+      if (i < answer.length) {
+        input.value += answer[i];
+        i += 1;
+      } else {
+        clearInterval(printer);
+      }
+    }, 200);
   }
 
   setStateLevel(state: string): void {
     const currentLevel = document.querySelector(`[current='true']`) as HTMLElement;
     const currentLevelState = currentLevel.nextElementSibling as HTMLElement;
-    currentLevelState.setAttribute('state', `${state}`);
-    currentLevelState.innerHTML = '&#128504';
-    const levelNumber = Number(currentLevel.getAttribute('level')) - 1;
-    LevelManager.levelsState[levelNumber] = `${state}`;
+    if (currentLevelState.getAttribute('state') !== 'finished-tip') {
+      currentLevelState.setAttribute('state', `${state}`);
+      currentLevelState.innerHTML = '&#128504';
+      const levelNumber = Number(currentLevel.getAttribute('level')) - 1;
+      LevelManager.levelsState[levelNumber] = `${state}`;
+    }
   }
 
   switchLevel(event: Event): void {
@@ -113,6 +150,7 @@ export class LevelManager extends LevelCreator implements DataLevelManager {
 
     const backBoard = document.querySelector('.visual-shelf-back-board') as HTMLElement;
     backBoard.classList.remove('win');
+    backBoard.innerHTML = '';
 
     document.querySelectorAll('.level-state').forEach((state) => {
       state.setAttribute('state', 'finished-none');

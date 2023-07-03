@@ -4,7 +4,7 @@ import { Drinks } from '../../drinks/drinks';
 
 export class LevelCreator implements DataLevelCreator {
   static levelQuestion: string;
-  static levelAnswer: string;
+  static levelAnswers: string[];
   static drinkAnswer: string[];
   static drinksArr: Drinks[];
 
@@ -24,7 +24,7 @@ export class LevelCreator implements DataLevelCreator {
 
       LevelCreator.drinksArr = [drink1];
       LevelCreator.drinkAnswer = ['true'];
-      LevelCreator.levelAnswer = 'tumbler';
+      LevelCreator.levelAnswers = ['tumbler'];
       LevelCreator.levelQuestion = 'Select the TUMBLER glass';
     }
     if (levelNumber === 2) {
@@ -34,7 +34,7 @@ export class LevelCreator implements DataLevelCreator {
 
       LevelCreator.drinksArr = [drink1, drink2, drink3];
       LevelCreator.drinkAnswer = ['false', 'true', 'true'];
-      LevelCreator.levelAnswer = 'balloon';
+      LevelCreator.levelAnswers = ['balloon'];
       LevelCreator.levelQuestion = 'Select the BALLOON glasses';
     }
 
@@ -45,7 +45,7 @@ export class LevelCreator implements DataLevelCreator {
 
       LevelCreator.drinksArr = [drink1, drink2, drink3];
       LevelCreator.drinkAnswer = ['false', 'true', 'false'];
-      LevelCreator.levelAnswer = '#purple';
+      LevelCreator.levelAnswers = ['#purple'];
       LevelCreator.levelQuestion = 'Select the PURPLE COCKTAIL glass';
     }
 
@@ -57,7 +57,7 @@ export class LevelCreator implements DataLevelCreator {
 
       LevelCreator.drinksArr = [drink1, drink2, drink3, drink4];
       LevelCreator.drinkAnswer = ['true', 'false', 'false', 'true'];
-      LevelCreator.levelAnswer = '#green';
+      LevelCreator.levelAnswers = ['#green'];
       LevelCreator.levelQuestion = 'Select GREEN glasses';
     }
 
@@ -70,7 +70,7 @@ export class LevelCreator implements DataLevelCreator {
 
       LevelCreator.drinksArr = [drink1, drink2, drink3, drink4, drink5];
       LevelCreator.drinkAnswer = ['false', 'true', 'false', 'true', 'true'];
-      LevelCreator.levelAnswer = 'cocktail';
+      LevelCreator.levelAnswers = ['cocktail'];
       LevelCreator.levelQuestion = 'Select COCKTAIL glasses';
     }
 
@@ -83,7 +83,7 @@ export class LevelCreator implements DataLevelCreator {
 
       LevelCreator.drinksArr = [drink1, drink2, drink3, drink4, drink5];
       LevelCreator.drinkAnswer = ['true', 'true', 'false', 'false', 'true'];
-      LevelCreator.levelAnswer = 'cola';
+      LevelCreator.levelAnswers = ['cola'];
       LevelCreator.levelQuestion = 'Select glasses with COLA';
     }
 
@@ -96,7 +96,7 @@ export class LevelCreator implements DataLevelCreator {
 
       LevelCreator.drinksArr = [drink1, drink2, drink3, drink4, drink5];
       LevelCreator.drinkAnswer = ['false', 'true', 'true', 'false', 'false'];
-      LevelCreator.levelAnswer = 'tumbler milk';
+      LevelCreator.levelAnswers = ['tumbler milk'];
       LevelCreator.levelQuestion = 'Select TUMBLER glasses with MILK';
     }
 
@@ -109,7 +109,7 @@ export class LevelCreator implements DataLevelCreator {
 
       LevelCreator.drinksArr = [drink1, drink2, drink3, drink4, drink5];
       LevelCreator.drinkAnswer = ['true', 'true', 'false', 'false', 'false'];
-      LevelCreator.levelAnswer = 'cocktail jucie.half';
+      LevelCreator.levelAnswers = ['cocktail jucie.half'];
       LevelCreator.levelQuestion = 'Select the COCKTAIL glass with HALF portion of JUICE';
     }
 
@@ -122,7 +122,7 @@ export class LevelCreator implements DataLevelCreator {
 
       LevelCreator.drinksArr = [drink1, drink2, drink3, drink4, drink5];
       LevelCreator.drinkAnswer = ['false', 'true', 'false', 'false', 'true'];
-      LevelCreator.levelAnswer = 'balloon #blue wine';
+      LevelCreator.levelAnswers = ['balloon #blue wine'];
       LevelCreator.levelQuestion = 'Select BLUE BALLOON glasses with WINE';
     }
 
@@ -136,7 +136,7 @@ export class LevelCreator implements DataLevelCreator {
 
       LevelCreator.drinksArr = [drink1, drink2, drink3, drink4, drink5, drink6];
       LevelCreator.drinkAnswer = ['true', 'true', 'true', 'true', 'true', 'true'];
-      LevelCreator.levelAnswer = '*';
+      LevelCreator.levelAnswers = ['*'];
       LevelCreator.levelQuestion = 'Select ALL glasses with beverages';
     }
 

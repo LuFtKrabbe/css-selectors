@@ -41,8 +41,12 @@
     height: 25px;
     width: 70%;
     border: solid 1px $color-selector-button;
+    &.waiting {
+        animation: glowing-input 1800ms infinite;
+    }
     &:focus {
         outline: none;
+        animation: none;
     }
 }
 

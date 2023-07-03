@@ -8,7 +8,7 @@ export class LevelChecker extends LevelManager implements DataLevelChecker {
     const input = document.querySelector('.selector-input') as HTMLInputElement;
     const info = document.querySelector('.selector-input-container') as HTMLElement;
 
-    if (input.value === LevelCreator.levelAnswer) {
+    if (LevelCreator.levelAnswers.includes(input.value)) {
       drinks.forEach((drink) => {
         drink.classList.add('drink-level-passed');
       });
@@ -35,6 +35,7 @@ export class LevelChecker extends LevelManager implements DataLevelChecker {
     const info = document.querySelector('.selector-input-container') as HTMLElement;
     const shelf = document.querySelector('.visual-shelf-top-bar') as HTMLElement;
     const backBoard = document.querySelector('.visual-shelf-back-board') as HTMLElement;
+
     button.addEventListener('click', this.check);
     window.addEventListener('keydown', this.checkByKey.bind(this));
     window.addEventListener('keyup', this.checkByKey.bind(this));

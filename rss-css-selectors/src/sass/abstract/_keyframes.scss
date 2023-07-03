@@ -34,6 +34,18 @@
   }
 }
 
+@keyframes glowing-input {
+  0% { 
+    background-color: $color-glowing-input;
+  }
+  50% { 
+    background-color: $color-glowing-input-light;
+  }
+  100% { 
+    background-color: $color-glowing-input;
+  }
+}
+
 @keyframes wrong-shake {
   0% { 
     transform: translateX(0px);

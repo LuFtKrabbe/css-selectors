@@ -15,9 +15,11 @@ export class SelectorBlock implements DataSelectorBlock {
 
     const input = document.createElement('input') as HTMLElement;
     input.classList.add('selector-input');
+    input.classList.add('waiting');
     input.setAttribute('type', 'text');
     input.setAttribute('size', '30');
     input.setAttribute('size', '16');
+    input.setAttribute('placeholder', 'Type CSS selector here...');
 
     inputContainer.append(input);
 
