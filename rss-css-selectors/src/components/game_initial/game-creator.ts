@@ -45,6 +45,7 @@ export class GameCreator {
     this.selectorBlock.draw();
     this.codeBlock.draw();
     this.levelBlock.draw();
+    this.levelManager.loadStateLevels();
     this.levelManager.createTabs();
     this.levelChecker.checkAnswer();
   }
