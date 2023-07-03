@@ -15,9 +15,10 @@ import {
   type DataLevelBlock,
   type DataLevelManager,
   type DataLevelChecker,
+  type DataGameCreator,
 } from '../types/interfaces';
 
-export class GameCreator {
+export class GameCreator implements DataGameCreator {
   parts: DataParts;
   visualBlock: DataVisualBlock;
   selectorCodeBlock: DataSelectorCodeBlock;
