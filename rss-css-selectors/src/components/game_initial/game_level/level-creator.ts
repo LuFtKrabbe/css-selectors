@@ -17,9 +17,9 @@ export class LevelCreator implements DataLevelCreator {
     input.value = '';
   }
 
-  loadLevel(levelNumber: number): void {
+  loadLevel<T>(levelNumber: T): void {
     this.clearLevel();
-    if (levelNumber === 1) {
+    if (levelNumber === 1 || levelNumber === '1') {
       const drink1 = new Drinks(GLASS.TUMBLER, COLOR.NONE, BEVERAGE.NONE, FULLNESS.NONE);
 
       LevelCreator.drinksArr = [drink1];
