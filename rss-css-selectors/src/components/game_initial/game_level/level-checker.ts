@@ -54,6 +54,9 @@ export class LevelChecker extends LevelManager implements DataLevelChecker {
           this.clearLevel();
           backBoard.classList.add('win');
           backBoard.innerHTML = '! GAME WIN !';
+        } else if (LevelManager.currentLevel !== LevelManager.levelsState.length) {
+          LevelManager.currentLevel += 1;
+          this.setCurrentLevel();
         } else {
           const nextLevel = LevelManager.levelsState.indexOf('finished-none') + 1;
           LevelManager.currentLevel = nextLevel;

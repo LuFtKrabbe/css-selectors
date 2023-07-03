@@ -49,7 +49,7 @@ export class Drinks implements DataDrinks {
     if (this.beverage !== 'none' && this.fullness !== 'half') {
       beverageCode.innerText = `<${this.beverage}>`;
     } else if (this.fullness === 'half') {
-      beverageCode.innerText = `<${this.beverage} class=${this.fullness}>`;
+      beverageCode.innerText = `<${this.beverage} class="${this.fullness}">`;
     }
 
     const closedTag = `</${this.glass}>`;
@@ -92,7 +92,6 @@ export class Drinks implements DataDrinks {
       const text = element.textContent.slice(0, element.textContent.indexOf('>') + 1);
 
       const glass = document.querySelector(`[glass-drink-number='${beverageNumber}']`) as HTMLElement;
-      // glass.setAttribute('move', 'false');
 
       const beverage = document.querySelector(`[beverage-drink-number='${beverageNumber}']`) as HTMLElement;
       beverage.setAttribute('focus', 'true');

@@ -87,6 +87,9 @@ export class LevelManager extends LevelCreator implements DataLevelManager {
   }
 
   printLevelTip(): void {
+    const task = document.querySelector('.selector-tips') as HTMLElement;
+    task.innerHTML = 'Possible answers: ' + LevelCreator.levelAnswers.join(' | ');
+
     const input = document.querySelector('.selector-input') as HTMLInputElement;
     const answer = LevelCreator.levelAnswers[0];
     let i = 0;
