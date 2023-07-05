@@ -17,7 +17,7 @@ export class LevelChecker extends LevelManager implements DataLevelChecker {
     }
   }
 
-  checkByKey(event: KeyboardEvent): void {
+  inputByKey(event: KeyboardEvent): void {
     const button = document.querySelector('.selector-button') as HTMLElement;
 
     if (event.code === 'Enter' && event.type === 'keydown') {
@@ -37,8 +37,8 @@ export class LevelChecker extends LevelManager implements DataLevelChecker {
     const backBoard = document.querySelector('.visual-shelf-back-board') as HTMLElement;
 
     button.addEventListener('click', this.check);
-    window.addEventListener('keydown', this.checkByKey.bind(this));
-    window.addEventListener('keyup', this.checkByKey.bind(this));
+    window.addEventListener('keydown', this.inputByKey.bind(this));
+    window.addEventListener('keyup', this.inputByKey.bind(this));
 
     info.addEventListener('animationend', (animationEvent) => {
       if (animationEvent.animationName === 'wrong-shake') {
@@ -54,7 +54,7 @@ export class LevelChecker extends LevelManager implements DataLevelChecker {
           this.clearLevel();
           backBoard.classList.add('win');
           backBoard.innerHTML = '! GAME WIN !';
-        } else if (LevelManager.currentLevel !== LevelManager.levelsState.length) {
+        } else if (LevelManager.currentLevel !== LevelManager.levelsQuantity) {
           LevelManager.currentLevel += 1;
           this.setCurrentLevel();
         } else {

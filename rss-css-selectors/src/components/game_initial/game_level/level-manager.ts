@@ -1,9 +1,11 @@
 import { type DataLevelManager } from '../../types/interfaces';
 import { LevelCreator } from './level-creator';
+import { elemHTMLClassAttr } from '../../utilities/functions';
 
 export class LevelManager extends LevelCreator implements DataLevelManager {
   static currentLevel = 1;
-  static levelsState: string[] = Array(10).fill('finished-none');
+  static levelsQuantity = 10;
+  static levelsState: string[] = Array(LevelManager.levelsQuantity).fill('finished-none');
 
   saveStateLevels(): void {
     localStorage.setItem('levels-state', JSON.stringify(LevelManager.levelsState));
@@ -24,47 +26,41 @@ export class LevelManager extends LevelCreator implements DataLevelManager {
   createTabs(): void {
     const levelBlock = document.querySelector('.game-level') as HTMLElement;
 
-    for (let i = 1; i <= LevelManager.levelsState.length; i += 1) {
-      const levelTablet = document.createElement('div') as HTMLElement;
-      levelTablet.classList.add('level-tablet');
-      levelTablet.setAttribute('level', `${i}`);
-      levelBlock.append(levelTablet);
+    for (let i = 1; i <= LevelManager.levelsQuantity; i += 1) {
+      const levelTablet = elemHTMLClassAttr('level-tablet')('level', `${i}`);
+      const levelState = elemHTMLClassAttr('level-state')('level', `${i}`);
+      const levelName = elemHTMLClassAttr('level-name')('level', `${i}`);
 
-      const levelName = document.createElement('div') as HTMLElement;
-      levelName.classList.add('level-name');
+      levelState.setAttribute('state', `${LevelManager.levelsState[i - 1]}`);
       levelName.innerText = `Level ${i}`;
-      levelName.setAttribute('level', `${i}`);
-      levelName.setAttribute('current', 'false');
+
+      levelBlock.append(levelTablet);
+      levelTablet.append(levelName, levelState);
+
       if (LevelManager.currentLevel === i) {
         levelName.setAttribute('current', 'true');
-        this.loadLevel(LevelManager.currentLevel);
+      } else {
+        levelName.setAttribute('current', 'false');
       }
-      levelTablet.append(levelName);
 
-      const levelState = document.createElement('div') as HTMLElement;
-      levelState.classList.add('level-state');
-      levelState.setAttribute('state', `${LevelManager.levelsState[i - 1]}`);
-      levelState.setAttribute('level', `${i}`);
-      levelState.innerHTML = '&#128504';
       if (LevelManager.levelsState[i - 1] === 'finished-none') {
         levelState.innerHTML = '?';
+      } else {
+        levelState.innerHTML = '&#128504';
       }
-      levelTablet.append(levelState);
+
+      this.loadLevel(LevelManager.currentLevel);
     }
 
-    const levelHelpButton = document.createElement('div') as HTMLElement;
-    levelHelpButton.classList.add('level-help');
-    levelHelpButton.innerHTML = 'HELP';
-    levelBlock.append(levelHelpButton);
-
-    const levelResetButton = document.createElement('div') as HTMLElement;
-    levelResetButton.classList.add('level-reset');
-    levelResetButton.innerHTML = 'RESET';
-    levelBlock.append(levelResetButton);
+    const helpButton = elemHTMLClassAttr('level-help')();
+    const resetButton = elemHTMLClassAttr('level-reset')();
+    helpButton.innerHTML = 'HELP';
+    resetButton.innerHTML = 'RESET';
+    levelBlock.append(helpButton, resetButton);
 
     levelBlock.addEventListener('click', this.switchLevel.bind(this));
     levelBlock.addEventListener('click', this.useLevelTip.bind(this));
-    levelResetButton.addEventListener('click', this.resetLevels.bind(this));
+    resetButton.addEventListener('click', this.resetLevels.bind(this));
     window.addEventListener('beforeunload', this.saveStateLevels.bind(this));
   }
 

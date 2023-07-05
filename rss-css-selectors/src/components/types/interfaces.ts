@@ -58,7 +58,7 @@ export interface DataLevelManager {
 
 export interface DataLevelChecker {
   check: () => void;
-  checkByKey:(event: KeyboardEvent) => void
+  inputByKey: (event: KeyboardEvent) => void;
   checkAnswer: () => void;
 }
 

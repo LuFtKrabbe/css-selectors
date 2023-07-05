@@ -1,5 +1,6 @@
 import { type DataDrinks } from '../types/interfaces';
 import { type GLASS, type COLOR, type BEVERAGE, type FULLNESS } from '../types/enums';
+import { elemHTMLClassAttr } from '../utilities/functions';
 
 export class Drinks implements DataDrinks {
   glass: GLASS;
@@ -28,34 +29,24 @@ export class Drinks implements DataDrinks {
   createCode(number: number): void {
     const codeBlockLines = document.querySelector('.code-block-lines') as HTMLElement;
 
-    const glassCode = document.createElement('div') as HTMLElement;
-    glassCode.classList.add('glass-block-code');
-    glassCode.setAttribute('glass-code-number', `${number}`);
+    const glassCode = elemHTMLClassAttr('glass-block-code')('glass-code-number', `${number}`);
+    const beverageCode = elemHTMLClassAttr('beverage-block-code')('beverage-code-number', `${number}`);
 
-    const beverageCode = document.createElement('div') as HTMLElement;
-    beverageCode.classList.add('beverage-block-code');
-    beverageCode.setAttribute('beverage-code-number', `${number}`);
-
-    glassCode.addEventListener('mouseover', this.showGlass);
-    glassCode.addEventListener('mouseout', this.leaveGlass);
-    beverageCode.addEventListener('mouseover', this.showBeverage);
-    beverageCode.addEventListener('mouseout', this.leaveBeverage);
-
-    let openedTag = `<${this.glass}>`;
-    if (this.color !== 'none') {
-      openedTag = `<${this.glass} id="${this.color}">`;
-    }
-
+    const openedTag = this.color !== 'none' ? `<${this.glass}>` : `<${this.glass} id="${this.color}">`;
     if (this.beverage !== 'none' && this.fullness !== 'half') {
       beverageCode.innerText = `<${this.beverage}>`;
     } else if (this.fullness === 'half') {
       beverageCode.innerText = `<${this.beverage} class="${this.fullness}">`;
     }
-
     const closedTag = `</${this.glass}>`;
 
     glassCode.append(openedTag, beverageCode, closedTag);
     codeBlockLines.append(glassCode);
+
+    glassCode.addEventListener('mouseover', this.showGlass);
+    glassCode.addEventListener('mouseout', this.leaveGlass);
+    beverageCode.addEventListener('mouseover', this.showBeverage);
+    beverageCode.addEventListener('mouseout', this.leaveBeverage);
   }
 
   showGlass(event: Event): void {
@@ -65,8 +56,7 @@ export class Drinks implements DataDrinks {
       const glass = document.querySelector(`[glass-drink-number='${glassNumber}']`) as HTMLElement;
       glass.setAttribute('focus', 'true');
 
-      const helper = document.createElement('div');
-      helper.classList.add('helper');
+      const helper = elemHTMLClassAttr('helper')();
       helper.innerText = element.textContent.slice(0, element.textContent.indexOf('>') + 1);
 
       glass.prepend(helper);
@@ -89,17 +79,12 @@ export class Drinks implements DataDrinks {
     const element = event.target as HTMLElement;
     const beverageNumber = element.getAttribute('beverage-code-number');
     if (element.matches('.beverage-block-code') && element.textContent !== null && beverageNumber !== null) {
-      const text = element.textContent.slice(0, element.textContent.indexOf('>') + 1);
-
       const glass = document.querySelector(`[glass-drink-number='${beverageNumber}']`) as HTMLElement;
-
       const beverage = document.querySelector(`[beverage-drink-number='${beverageNumber}']`) as HTMLElement;
       beverage.setAttribute('focus', 'true');
 
-      const helper = document.createElement('div');
-      helper.classList.add('helper');
-      helper.innerText = text;
-      helper.setAttribute('focus', 'true');
+      const helper = elemHTMLClassAttr('helper')('focus', 'true');
+      helper.innerText = element.textContent.slice(0, element.textContent.indexOf('>') + 1);
 
       glass.prepend(helper);
     }
@@ -123,48 +108,37 @@ export class Drinks implements DataDrinks {
   showCode(event: Event): void {
     const element = event.target as HTMLElement;
     const beverageNumber = element.getAttribute('beverage-drink-number');
+    const helperVis = elemHTMLClassAttr('helper-vis')('focus', 'true');
+
     let glassNumber: string | null = '';
     if (this instanceof HTMLElement) {
       glassNumber = this.getAttribute('glass-drink-number');
     }
+
     if (element.matches(`[contain='true']`) && beverageNumber !== null) {
       const codeBeverage = document.querySelector(`[beverage-code-number='${beverageNumber}']`) as HTMLElement;
       codeBeverage.setAttribute('focus', 'true');
-
-      const helper = document.createElement('div');
-      helper.classList.add('helper-vis');
-      helper.setAttribute('focus', 'true');
-
       if (codeBeverage.textContent !== null) {
-        const text = codeBeverage.textContent.slice(0, codeBeverage.textContent.indexOf('>') + 1);
-        helper.innerText = text;
-      }
-
-      if (this instanceof HTMLElement) {
-        this.append(helper);
+        helperVis.innerText = codeBeverage.textContent.slice(0, codeBeverage.textContent.indexOf('>') + 1);
       }
     } else if (glassNumber !== null) {
       const codeGlass = document.querySelector(`[glass-code-number='${glassNumber}']`) as HTMLElement;
       codeGlass.setAttribute('focus', 'true');
-
-      const helper = document.createElement('div');
-      helper.classList.add('helper-vis');
-      helper.setAttribute('focus', 'true');
-
       if (codeGlass.textContent !== null) {
-        const text = codeGlass.textContent.slice(0, codeGlass.textContent.indexOf('>') + 1);
-        helper.innerText = text;
+        helperVis.innerText = codeGlass.textContent.slice(0, codeGlass.textContent.indexOf('>') + 1);
       }
+    }
 
-      if (this instanceof HTMLElement) {
-        this.append(helper);
-      }
+    if (this instanceof HTMLElement) {
+      this.append(helperVis);
     }
   }
 
   leaveCode(event: Event): void {
     const element = event.target as HTMLElement;
     const beverageNumber = element.getAttribute('beverage-drink-number');
+    const helperVis = document.querySelector('.helper-vis') as HTMLElement;
+
     let glassNumber: string | null = '';
     if (this instanceof HTMLElement) {
       glassNumber = this.getAttribute('glass-drink-number');
@@ -172,44 +146,26 @@ export class Drinks implements DataDrinks {
     if (element.matches(`[contain='true']`) && beverageNumber !== null) {
       const codeBeverage = document.querySelector(`[beverage-code-number='${beverageNumber}']`) as HTMLElement;
       codeBeverage.setAttribute('focus', 'false');
-      const helper = document.querySelector('.helper-vis') as HTMLElement;
-      helper.remove();
     } else if (glassNumber !== null) {
       const codeGlass = document.querySelector(`[glass-code-number='${glassNumber}']`) as HTMLElement;
       codeGlass.setAttribute('focus', 'false');
-
-      const helper = document.querySelector('.helper-vis') as HTMLElement;
-      helper.remove();
     }
+
+    helperVis.remove();
   }
 
   createDrink(number: number, answer: string): void {
     const shelf = document.querySelector('.visual-shelf-top-bar') as HTMLElement;
-    const drink = document.createElement('div') as HTMLElement;
-    const main = document.createElement('div') as HTMLElement;
-    const stem = document.createElement('div') as HTMLElement;
-    const bottom = document.createElement('div') as HTMLElement;
-    const contain = document.createElement('div') as HTMLElement;
-    const wallLeft = document.createElement('div') as HTMLElement;
-    const wallRight = document.createElement('div') as HTMLElement;
 
-    contain.setAttribute('beverage-drink-number', `${number}`);
-    contain.setAttribute('contain', 'true');
-
-    drink.setAttribute('glass-drink-number', `${number}`);
-    drink.setAttribute('answer', `${answer}`);
-
-    drink.addEventListener('mouseover', this.showCode);
-    drink.addEventListener('mouseout', this.leaveCode);
+    const drink = elemHTMLClassAttr(`${this.glass}-drink`)('glass-drink-number', `${number}`);
+    const contain = elemHTMLClassAttr(`${this.glass}-contain`)('beverage-drink-number', `${number}`);
+    const main = elemHTMLClassAttr(`${this.glass}-main`)();
+    const stem = elemHTMLClassAttr(`${this.glass}-stem`)();
+    const bottom = elemHTMLClassAttr(`${this.glass}-bottom`)();
+    const wallLeft = elemHTMLClassAttr(`tumbler-wall-left`)();
+    const wallRight = elemHTMLClassAttr(`tumbler-wall-right`)();
 
     if (this.glass === 'tumbler') {
-      drink.classList.add('tumbler-drink');
-      main.classList.add('tumbler-main');
-      bottom.classList.add('tumbler-bottom');
-      wallLeft.classList.add('tumbler-wall-left');
-      contain.classList.add('tumbler-contain');
-      wallRight.classList.add('tumbler-wall-right');
-
       main.append(wallLeft, contain, wallRight);
       drink.append(main, bottom);
 
@@ -221,12 +177,6 @@ export class Drinks implements DataDrinks {
     }
 
     if (this.glass === 'cocktail') {
-      drink.classList.add('cocktail-drink');
-      contain.classList.add('cocktail-contain');
-      main.classList.add('cocktail-main');
-      stem.classList.add('cocktail-stem');
-      bottom.classList.add('cocktail-bottom');
-
       main.append(contain);
       drink.append(main, stem, bottom);
 
@@ -237,12 +187,6 @@ export class Drinks implements DataDrinks {
     }
 
     if (this.glass === 'balloon') {
-      drink.classList.add('balloon-drink');
-      contain.classList.add('balloon-contain');
-      main.classList.add('balloon-main');
-      stem.classList.add('balloon-stem');
-      bottom.classList.add('balloon-bottom');
-
       main.append(contain);
       drink.append(main, stem, bottom);
 
@@ -258,9 +202,15 @@ export class Drinks implements DataDrinks {
 
     if (this.beverage === 'none' || this.fullness === 'none') {
       contain.remove();
+    } else {
+      contain.setAttribute('contain', 'true');
     }
 
+    drink.addEventListener('mouseover', this.showCode);
+    drink.addEventListener('mouseout', this.leaveCode);
+    drink.setAttribute('answer', `${answer}`);
     drink.setAttribute('move', 'true');
+
     shelf.append(drink);
   }
 }
