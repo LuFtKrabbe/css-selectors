@@ -29,6 +29,8 @@ export interface DataDrinks {
   color: COLOR;
   beverage: BEVERAGE;
   fullness: FULLNESS;
+  setBeverageColor: () => string;
+  setGlassColor: (transparency: number) => string;
   showGlass: (event: Event) => void;
   leaveGlass: (event: Event) => void;
   showBeverage: (event: Event) => void;

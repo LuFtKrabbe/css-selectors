@@ -18,12 +18,12 @@ export class Drinks implements DataDrinks {
     this.fullness = fullness;
   }
 
-  private setBeverageColor(): string {
+  setBeverageColor(): string {
     return this.colorsBevereges[this.beverage];
   }
 
-  private setGlassColor(transparency: number): string {
-    return this.colorsGlasses[this.color] + ('0' + transparency.toString(16)).slice(-2);
+  setGlassColor(transparency: number): string {
+    return this.colorsGlasses[this.color] + ('0' + transparency.toString(16)).slice(-2); // transparency in range 0 to 255
   }
 
   createCode(number: number): void {
