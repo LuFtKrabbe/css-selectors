@@ -154,7 +154,7 @@ export class Drinks implements DataDrinks {
     helperVis.remove();
   }
 
-  createDrink(number: number, answer: string): void {
+  createDrink(number: number, answer: boolean): void {
     const shelf = document.querySelector('.visual-shelf-top-bar') as HTMLElement;
 
     const drink = elemHTMLClassAttr(`${this.glass}-drink`)('glass-drink-number', `${number}`);
@@ -208,7 +208,11 @@ export class Drinks implements DataDrinks {
 
     drink.addEventListener('mouseover', this.showCode);
     drink.addEventListener('mouseout', this.leaveCode);
-    drink.setAttribute('answer', `${answer}`);
+    drink.setAttribute('answer', `${answer.toString()}`);
+    if (answer) {
+      drink.style.animation = 'moving 1800ms infinite';
+    }
+
     drink.setAttribute('move', 'true');
 
     shelf.append(drink);

@@ -38,12 +38,12 @@ export interface DataDrinks {
   showCode: (event: Event) => void;
   leaveCode: (event: Event) => void;
   createCode: (number: number) => void;
-  createDrink: (number: number, answer: string) => void;
+  createDrink: (number: number, answer: boolean) => void;
 }
 
 export interface DataLevelCreator {
   clearLevel: () => void;
-  loadLevel: <T>(levelNumber: T) => void;
+  loadLevel: (levelNumber: number) => void;
 }
 
 export interface DataLevelManager {

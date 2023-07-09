@@ -4,9 +4,6 @@
   justify-content: flex-end;
   flex-direction: column;
   position: relative;
-  &[answer = true] {
-    animation: moving 1800ms infinite;
-  }
   &[focus = true] {
     animation: glowing-drink 1500ms infinite;
   }

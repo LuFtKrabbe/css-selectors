@@ -16,13 +16,13 @@
 
 @import "layouts/main";
 
-    @import "layouts/game_level/level";
+@import "layouts/game_level/level";
 
-    @import "layouts/game_field/game-field";
-    @import "layouts/game_field/visual";
+@import "layouts/game_field/game-field";
+@import "layouts/game_field/visual";
 
-        @import "layouts/game_field/selector-code";
-            @import "layouts/game_field/code";
-            @import "layouts/game_field/selector";
+@import "layouts/game_field/selector-code";
+@import "layouts/game_field/code";
+@import "layouts/game_field/selector";
 
 @import "layouts/footer";

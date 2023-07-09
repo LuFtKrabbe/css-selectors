@@ -14,11 +14,11 @@ export class LevelManager extends LevelCreator implements DataLevelManager {
 
   loadStateLevels(): void {
     const storageLevelsState: string | null = localStorage.getItem('levels-state');
-    if (storageLevelsState !== null && storageLevelsState !== 'undefined') {
+    if (storageLevelsState !== null) {
       LevelManager.levelsState = JSON.parse(storageLevelsState);
     }
     const storageCurrentLevel: string | null = localStorage.getItem('current-level');
-    if (storageCurrentLevel !== null && storageCurrentLevel !== 'undefined') {
+    if (storageCurrentLevel !== null) {
       LevelManager.currentLevel = JSON.parse(storageCurrentLevel);
     }
   }
